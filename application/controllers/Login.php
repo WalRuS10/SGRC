@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 				redirect('empleados/index');
 			}else{
 				
-				$data['errorMessage'] = "Wrong User or Password";	
+				$data['errorMessage'] = "Usuario o password erroneos";	
 				$data['_view'] = 'login/index';
 				$this->load->view('layouts/login',$data);
 			}

@@ -85,6 +85,6 @@ class Empleados extends CI_Controller {
             }
         }
         else
-            show_error('The empleado you are trying to edit does not exist.');
+            show_error('El empleado no existe');
     } 
 }
