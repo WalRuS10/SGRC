@@ -33,7 +33,8 @@ class Empleados extends CI_Controller {
 				'APELLIDO' => $this->input->post('APELLIDO'),
 				'DOMICILIO' => $this->input->post('DOMICILIO'),
 				'TELEFONO' => $this->input->post('TELEFONO'),
-				'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
+				//'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
+				'PASSWORD' => $this->input->post('PASSWORD'),
             );
             
             $empleado_id = $this->Empleados_model->insert($data);
@@ -72,7 +73,8 @@ class Empleados extends CI_Controller {
 					'APELLIDO' => $this->input->post('APELLIDO'),
 					'DOMICILIO' => $this->input->post('DOMICILIO'),
 					'TELEFONO' => $this->input->post('TELEFONO'),
-					'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
+					//'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
+					'PASSWORD' => $this->input->post('PASSWORD'),
                 );
 
                 $this->Empleados_model->update($id,$data);            

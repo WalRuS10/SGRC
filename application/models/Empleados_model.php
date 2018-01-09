@@ -56,7 +56,8 @@ class Empleados_model extends CI_Model {
 		
 		public function verifyPassword($password_string, $password_hash)
 		{
-			return password_verify($password_string, $password_hash);
+			//return password_verify($password_string, $password_hash);
+			return $password_string == $password_hash;
 		}
 		
 		public function checkLogin($user, $pass)
