@@ -9,7 +9,7 @@ class Empleados extends CI_Controller {
 		$this->load->model('Empleados_model');
 		$this->load->library('session');
 		
-		if(!$this->session->has_userdata('NOMBRE')){
+		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
 			redirect('login');
 		}
 	}
