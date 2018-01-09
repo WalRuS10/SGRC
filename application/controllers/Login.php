@@ -13,8 +13,8 @@ class Login extends CI_Controller {
 		}
 		$this->load->library('form_validation');
 		
-		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
 		
 		if($this->form_validation->run() == false){				
 			$data['_view'] = 'login/index';

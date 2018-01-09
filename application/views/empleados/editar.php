@@ -34,7 +34,7 @@
 					<div class="col-md-6">
 						<label for="PASSWORD" class="control-label">PASSWORD</label>
 						<div class="form-group">
-							<input type="text" name="PASSWORD" value="<?php echo ($this->input->post('PASSWORD') ? $this->input->post('PASSWORD') : $empleado['PASSWORD']); ?>" class="form-control" id="PASSWORD" />
+							<input type="password" name="PASSWORD" value="" class="form-control" id="PASSWORD" />
 						</div>
 					</div>
 				</div>
