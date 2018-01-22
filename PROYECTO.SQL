@@ -25,7 +25,7 @@ ENGINE = InnoDB;
 
 
 INSERT INTO `empleados` (`LEGAJO`, `NOMBRE`, `APELLIDO`, `DOMICILIO`, `TELEFONO`, `PASSWORD`) VALUES
-(1, 'admin', '', '', 0, '$2y$12$ij1ru0VDr.W5yqvC.dyXJOtRxk2cJGR0eSl5H1mTWNCUH.TH6pS0m');
+(1, 'admin', '', '', 0, 'admin');
 
 -- -----------------------------------------------------
 -- Table `PROYECTO`.`TECNICOS`
