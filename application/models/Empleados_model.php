@@ -23,9 +23,14 @@ class Empleados_model extends CI_Model {
 			
 		}
 		
-		public function search($keywords)
+		//Martín - Esta función devuelve busca y devuelve filas si $searchword contiene un valor o devuelve todas si está vacía
+		public function search($field, $searchword)
 		{
-			//To Do...
+			return $this->db->query("SELECT *
+									 FROM $this->table_name
+									 WHERE ($field LIKE '%$searchword%' AND '$searchword' <> ''
+											OR '$searchword' = '')
+									 ")->result_array();
 		}
 		
 		public function insert($data)
