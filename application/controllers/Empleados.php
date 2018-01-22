@@ -15,12 +15,15 @@ class Empleados extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$data['lista_empleados'] = $this->Empleados_model->getAll();
-					
-		$data['_view'] = 'empleados/index';
-		$this->load->view('layouts/main',$data);
-			
+		//Martín - Se verifica si se introdujo algún valor en el formulario de búsqueda
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_empleados'] = $this->Empleados_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_empleados'] = $this->Empleados_model->getAll();
+		}		
+			$data['_view'] = 'empleados/index';
+			$this->load->view('layouts/main',$data);
 	}
 	
 	public function nuevo()
