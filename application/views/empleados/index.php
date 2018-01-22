@@ -1,8 +1,17 @@
 <h1>Empleados</h1>
-<?=form_open('empleados/buscar');?>
+<?
+$fields = array(
+				'LEGAJO' => "Legajo",
+				'NOMBRE' => "Nombre",
+				'APELLIDO' => "Apellido",
+				'DOMICILIO' => "Domicilio",
+				'TELEFONO' => "Teléfono",
+				 );?>
+<?=form_open('empleados/index');?>
 <div class="form-group">
-	<?=form_label('Legajo: ', 'legajo');?>
-	<?=form_input('legajo', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>
