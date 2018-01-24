@@ -23,6 +23,20 @@ class Reparaciones_model extends CI_Model {
 			
 		}
 		
+		public function getEstado($id)
+		{
+			return $this->db->query("SELECT descripcion
+							FROM estados_reparaciones
+							WHERE ID_ESTADO=$id
+							")->row_array();
+		}
+		
+		public function getAllEstados()
+		{
+			return $this->db->query("SELECT *
+							FROM estados_reparaciones")->result_array();
+		}
+		
 		public function search($keywords)
 		{
 			//To Do...

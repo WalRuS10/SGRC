@@ -10,7 +10,11 @@
 	<div class="form-group">
 		<label for="ESTADO_REPARACION" class="col-md-4 control-label">ESTADO_REPARACION</label>
 		<div class="col-md-8">
-			<input type="text" name="ESTADO_REPARACION" value="<?=$this->input->post('ESTADO_REPARACION'); ?>" class="form-control" id="ESTADO_REPARACION" />
+			<select name="ESTADO_REPARACION" size=1>
+			<? foreach($lista_estados as $est): ?>
+			<option value=<?=$est['ID_ESTADO'];?>><?=$est['DESCRIPCION'];?></option>
+			<? endforeach; ?>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
@@ -36,6 +40,7 @@
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Guardar</button>
 			<a class="btn btn-danger" href="<?=site_url('reparaciones')?>" >Cancelar</a>
+			
         </div>
 	</div>
 

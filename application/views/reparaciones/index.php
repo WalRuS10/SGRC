@@ -24,7 +24,7 @@
 	<tr>
 		<td><?=$rep['NRO_ORDEN']?></td>
 		<td><?=$rep['ID_COMPUTADORA']?></td>
-		<td><?=$rep['ESTADO_REPARACION']?></td>
+		<td><?=implode($this->Reparaciones_model->getEstado($rep['ESTADO_REPARACION']));?></td>
 		<td><?=$rep['FALLA']?></td>
 		<td><?=$rep['OBSERVACIONES']?></td>
 		<td><?=$rep['FECHA_ENTREGA']?></td>

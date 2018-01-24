@@ -16,9 +16,10 @@ class Reparaciones extends CI_Controller {
 	public function index()
 	{
 		
-		$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();
-					
+		$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();		
+				
 		$data['_view'] = 'reparaciones/index';
+		
 		$this->load->view('layouts/main',$data);
 			
 	}
@@ -41,6 +42,7 @@ class Reparaciones extends CI_Controller {
         }
         else
         {            
+			$data['lista_estados'] = $this->Reparaciones_model->getAllEstados();
             $data['_view'] = 'reparaciones/nuevo';
 			$this->load->view('layouts/main',$data);
         }
