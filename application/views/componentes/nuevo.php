@@ -2,12 +2,6 @@
 
 <?php echo form_open('componentes/nuevo',array("class"=>"form-horizontal")); ?>
 	<div class="form-group">
-		<label for="ID_COMPONENTE" class="col-md-4 control-label">ID de Componente</label>
-		<div class="col-md-8">
-			<input type="text" name="ID_COMPONENTE" value="<?=$this->input->post('ID_COMPONENTE'); ?>" class="form-control" id="ID_COMPONENTE" />
-		</div>
-	</div>
-	<div class="form-group">
 		<label for="DESCRIPCION" class="col-md-4 control-label">Descripción</label>
 		<div class="col-md-8">
 			<input type="text" name="DESCRIPCION" value="<?=$this->input->post('DESCRIPCION'); ?>" class="form-control" id="DESCRIPCION" />

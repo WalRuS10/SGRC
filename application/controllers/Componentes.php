@@ -28,7 +28,6 @@ class Componentes extends CI_Controller {
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $data = array(
-				'ID_COMPONENTE' => $this->input->post('ID_COMPONENTE'),
 				'DESCRIPCION' => $this->input->post('DESCRIPCION'),
 				'STOCK' => $this->input->post('STOCK'),
 				'PRECIO_COMPRA' => $this->input->post('PRECIO_COMPRA')
