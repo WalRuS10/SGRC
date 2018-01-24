@@ -81,6 +81,7 @@ class Reparaciones extends CI_Controller {
             }
             else
             {
+				$data['lista_estados'] = $this->Reparaciones_model->getAllEstados();
                 $data['_view'] = 'reparaciones/editar';
 				$this->load->view('layouts/main',$data);
             }

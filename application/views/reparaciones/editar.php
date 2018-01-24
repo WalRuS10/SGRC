@@ -10,7 +10,13 @@
 					<div class="col-md-6">
 						<label for="ESTADO_REPARACION" class="control-label">ESTADO_REPARACION</label>
 						<div class="form-group">
-							<input type="text" name="ESTADO_REPARACION" value="<?php echo ($this->input->post('ESTADO_REPARACION') ? $this->input->post('ESTADO_REPARACION') : $orden['ESTADO_REPARACION']); ?>" class="form-control" id="ESTADO_REPARACION" />
+						
+							<select name="ESTADO_REPARACION" size=1>
+							<? foreach($lista_estados as $est): ?>
+							<option value=<?=$est['ID_ESTADO'];?> <?if(($this->input->post('ESTADO_REPARACION') ? $this->input->post('ESTADO_REPARACION') : $orden['ESTADO_REPARACION'])== $est['ID_ESTADO']) echo 'selected';?>><?=$est['DESCRIPCION'];?></option>
+							<? endforeach; ?>
+							</select>
+					
 						</div>
 					</div>
 					<div class="col-md-6">
