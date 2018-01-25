@@ -19,15 +19,17 @@
 </tr> 
 
 <? foreach($lista_computadoras as $com): ?>
+	<? foreach($lista_clientes as $cli): ?>
 	<tr>
 		<td><?=$com['ID_COMPUTADORA']?></td>
 		<td><?=$com['FECHA_INGRESO']?></td>
-		<td><?=$com['CUIT_CLIENTE']?></td>
+		<td><?=$cli['RAZON_SOCIAL']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('computadoras/editar/'.$com['ID_COMPUTADORA'])?>" >Editar</a>
 			<a class="btn btn-danger" href="<?=site_url('computadoras/eliminar/'.$com['ID_COMPUTADORA'])?>" >Eliminar</a>
 		</td>
 	</tr>
+	<? endforeach; ?>
 <? endforeach; ?>
 
 </table>
