@@ -7,6 +7,8 @@ class Empleados extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Empleados_model');
+		$this->load->model('Tecnicos_model');
+		$this->load->model('Encargados_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -39,8 +41,9 @@ class Empleados extends CI_Controller {
 				//'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
 				'PASSWORD' => $this->input->post('PASSWORD'),
             );
+			$cargo = $this->input->post('CARGO');
             
-            $empleado_id = $this->Empleados_model->insert($data);
+            $empleado_id = $this->Empleados_model->insert($data, $cargo);
             redirect('empleados/index');
         }
         else
@@ -79,8 +82,9 @@ class Empleados extends CI_Controller {
 					//'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
 					'PASSWORD' => $this->input->post('PASSWORD'),
                 );
+				$cargo = $this->input->post('CARGO');
 
-                $this->Empleados_model->update($id,$data);            
+                $this->Empleados_model->update($id, $data, $cargo);  
                 redirect('empleados/index');
             }
             else
@@ -91,5 +95,5 @@ class Empleados extends CI_Controller {
         }
         else
             show_error('El empleado no existe');
-    } 
+    }
 }

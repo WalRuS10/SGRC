@@ -26,6 +26,7 @@ $fields = array(
 	<th>Apellido</th>
 	<th>Domicilio</th>
 	<th>Telefono</th>
+	<th>Cargo</th>
 	<th hidden>Password</th>
 	<th>Acciones</th>
 </tr> 
@@ -37,6 +38,8 @@ $fields = array(
 		<td><?=$emp['APELLIDO']?></td>
 		<td><?=$emp['DOMICILIO']?></td>
 		<td><?=$emp['TELEFONO']?></td>
+		<td><?if ($emp['CARGO'] == "T") echo "Técnico";
+			  if ($emp['CARGO'] == "E") echo "Encargado"?></td>
 		<td hidden><?=$emp['PASSWORD']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('empleados/editar/'.$emp['LEGAJO'])?>" >Editar</a>

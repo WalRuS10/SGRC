@@ -37,6 +37,15 @@
 							<input type="password" name="PASSWORD" value="" class="form-control" id="PASSWORD" />
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="CARGO" class="col-md-4 control-label">CARGO</label>
+						<div class="col-md-8">
+							<select name="CARGO" class="form-control" id="CARGO">
+								<option value="E" <?php if(($this->input->post('CARGO') ? $this->input->post('CARGO') : $empleado['CARGO']) == 'E') echo "selected";?> >Encargado</option>
+								<option value="T" <?php if(($this->input->post('CARGO') ? $this->input->post('CARGO') : $empleado['CARGO']) == 'T') echo "selected";?> >Técnico</option>
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="box-footer">
