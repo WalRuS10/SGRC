@@ -46,7 +46,7 @@
 			</tr> 
 			<? foreach($proveedores_componente as $pc): ?>
 				<tr>
-					<td><?=$pc['CUIT_PROVEEDOR']?></td>
+					<td><?=$pc['RAZON_SOCIAL']?></td>
 					<td><?=$pc['PRECIO']?></td>
 					<td><a href='#'>eliminar</a></td>
 				</tr>
