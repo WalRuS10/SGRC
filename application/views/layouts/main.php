@@ -35,9 +35,15 @@
 							<a class="nav-link" href="<?=site_url('componentes')?>">
 								Componentes
 							</a>
-						</li></li><li class="nav-item">
+						</li>
+						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url('reparaciones')?>">
 								Reparaciones
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=site_url('computadoras')?>">
+								Computadoras
 							</a>
 						</li>
 					</ul>
