@@ -37,6 +37,15 @@
 			<input type="text" name="PASSWORD" value="<?=$this->input->post('PASSWORD'); ?>" class="form-control" id="PASSWORD" />
 		</div>
 	</div>
+	<div class="form-group">
+		<label for="CARGO" class="col-md-4 control-label">CARGO</label>
+		<div class="col-md-8">
+			<select name="CARGO" class="form-control" id="CARGO">
+				<option value="E">Encargado</option>
+				<option value="T">Técnico</option>
+			</select>
+		</div>
+	</div>
 	
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
