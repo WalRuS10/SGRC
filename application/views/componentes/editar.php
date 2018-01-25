@@ -35,5 +35,23 @@
 	        </div>				
 			<?php echo form_close(); ?>
 		</div>
+		
+		<div class="box-body">
+			<table class="table table-light">
+
+			<tr>
+				<th>Proveedor</th>
+				<th>Precio de Compra</th>
+				<th>Acciones</th>
+			</tr> 
+			<? foreach($proveedores_componente as $pc): ?>
+				<tr>
+					<td><?=$pc['CUIT_PROVEEDOR']?></td>
+					<td><?=$pc['PRECIO']?></td>
+					<td><a href='#'>eliminar</a></td>
+				</tr>
+			<? endforeach ?>
+			</table>
+		</div>
     </div>
 </div>

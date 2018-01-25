@@ -43,4 +43,23 @@ class Componentes_model extends CI_Model {
 			return $this->db->update($this->table_name, $data);
 		}
 		
+		public function addProveedorComponente($cuit_proveedor, $idcomponente, $precio)
+		{
+			return $this->db->insert('proveedores_componentes', array('CUIT_PROVEEDOR' => $cuit_proveedor,
+																'ID_COMPONENTE' => $idcomponente,
+																'PRECIO' => $precio));
+		}		
+		public function removeProveedorComponente($cuit_proveedor, $idcomponente)
+		{
+			return $this->db->delete('proveedores_componentes', array('CUIT_PROVEEDOR' => $cuit_proveedor,
+																'ID_COMPONENTE' => $idcomponente));
+		}
+		
+		public function getProveedoresComponente($id_componente)
+		{
+			return $this->db->query("SELECT *
+									 FROM proveedores_componentes
+									 WHERE ID_COMPONENTE = $id_componente")->result_array();
+		}
+		
 }

@@ -43,7 +43,7 @@ class Componentes extends CI_Controller {
         }
     }  
 	
-	function eliminar($id)
+	public function eliminar($id)
     {
         $data = $this->Componentes_model->getById($id);
 
@@ -56,7 +56,7 @@ class Componentes extends CI_Controller {
             show_error('El componente no existe.');
     }
 	
-	function editar($id)
+	public function editar($id)
     {   
         $data['componente'] = $this->Componentes_model->getById($id);
         
@@ -75,6 +75,7 @@ class Componentes extends CI_Controller {
             }
             else
             {
+				$data['proveedores_componente'] = $this->Componentes_model->getProveedoresComponente($id);
                 $data['_view'] = 'componentes/editar';
 				$this->load->view('layouts/main',$data);
             }
@@ -82,4 +83,16 @@ class Componentes extends CI_Controller {
         else
             show_error('El componente no existe');
     } 
+	
+	public function agregar_proveedor($id_componente, $cuit_proveedor, $precio)
+	{
+		$this->Componentes_model->add_proveedor_componente($cuit_proveedor, $id_componente, $precio);
+		redirect("componentes/editar/$id_componente");
+	}
+	
+	public function remover_proveedor($id_componente, $cuit_proveedor)
+	{
+		$this->Componentes_model->remove_proveedor_componente($cuit_proveedor, $id_componente);
+		redirect("componentes/editar/$id_componente");
+	}
 }
