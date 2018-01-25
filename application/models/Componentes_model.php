@@ -43,4 +43,11 @@ class Componentes_model extends CI_Model {
 			return $this->db->update($this->table_name, $data);
 		}
 		
+		public function add_proveedor($cuit_proveedor, $idcomponente, $precio)
+		{
+			$this->db->insert('proveedores_componentes', array('CUIT_PROVEEDOR' => $cuit_proveedor,
+																'ID_COMPONENTE' => $idcomponente,
+																'PRECIO' => $precio));
+		}
+		
 }
