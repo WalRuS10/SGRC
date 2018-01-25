@@ -59,6 +59,7 @@ class Componentes_model extends CI_Model {
 		{
 			return $this->db->query("SELECT *
 									 FROM proveedores_componentes
+									 JOIN proveedores on proveedores_componentes.CUIT_PROVEEDOR = proveedores.CUIT
 									 WHERE ID_COMPONENTE = $id_componente")->result_array();
 		}
 		
