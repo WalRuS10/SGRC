@@ -18,6 +18,7 @@
 	<th>Falla</th>
 	<th>Observaciones</th>
 	<th>Fecha de Entrega</th>
+	<th>Componentes y Gastos</th>
 </tr> 
 
 <? foreach($lista_reparaciones as $rep): ?>
@@ -28,6 +29,7 @@
 		<td><?=$rep['FALLA']?></td>
 		<td><?=$rep['OBSERVACIONES']?></td>
 		<td><?=$rep['FECHA_ENTREGA']?></td>
+		<td><a href="<?php echo site_url('reparaciones/componentesgastototal/'.$rep['NRO_ORDEN']); ?>" class="btn btn-success">VER COMPONENTES USADOS Y GASTO</a></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('reparaciones/editar/'.$rep['NRO_ORDEN'])?>" >Editar</a>
 			<a class="btn btn-danger" href="<?=site_url('reparaciones/eliminar/'.$rep['NRO_ORDEN'])?>" >Eliminar</a>

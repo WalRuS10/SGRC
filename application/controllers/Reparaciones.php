@@ -7,6 +7,7 @@ class Reparaciones extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Reparaciones_model');
+		$this->load->model('Componentes_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -89,4 +90,14 @@ class Reparaciones extends CI_Controller {
         else
             show_error('La reparación no existe');
     } 
+	
+	public function componentesgastototal($id)
+	{
+		$data['orden'] = $this->Reparaciones_model->getById($id);
+		$data['lista_reparacionescomponentes'] = $this->Reparaciones_model->getReparacionesComponentes($data['orden']['NRO_ORDEN']);
+		
+		$data['_view'] = 'reparaciones/componentesgastototal';
+		$this->load->view('layouts/main',$data);
+			
+	}
 }

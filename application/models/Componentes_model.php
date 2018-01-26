@@ -22,6 +22,7 @@ class Componentes_model extends CI_Model {
 			
 		}
 		
+		
 		public function search($keywords)
 		{
 			//To Do...

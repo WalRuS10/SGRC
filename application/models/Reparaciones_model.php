@@ -11,30 +11,36 @@ class Reparaciones_model extends CI_Model {
 		public function getAll()
 		{
 			return $this->db->query("SELECT *
-							FROM $this->table_name")->result_array();
+									 FROM $this->table_name")->result_array();
 			
 		}
 		public function getById($id)
 		{
 			return $this->db->query("SELECT *
-							FROM $this->table_name
-							where $this->PK = $id
-							")->row_array();
+									 FROM $this->table_name
+									 WHERE $this->PK = $id")->row_array();
 			
 		}
 		
 		public function getEstado($id)
 		{
 			return $this->db->query("SELECT descripcion
-							FROM estados_reparaciones
-							WHERE ID_ESTADO=$id
-							")->row_array();
+									 FROM estados_reparaciones
+									 WHERE ID_ESTADO=$id")->row_array();
 		}
 		
 		public function getAllEstados()
 		{
 			return $this->db->query("SELECT *
-							FROM estados_reparaciones")->result_array();
+									 FROM estados_reparaciones")->result_array();
+		}
+		
+		public function getReparacionesComponentes($id)
+		{
+			return $this->db->query("SELECT c.ID_COMPONENTE, c.DESCRIPCION, c.STOCK, c.PRECIO_COMPRA 
+									 FROM componentes c 
+									 JOIN reparaciones_componentes rc ON c.ID_COMPONENTE=rc.ID_COMPONENTE 
+									 WHERE rc.NRO_ORDEN=$id")->result_array();
 		}
 		
 		public function search($keywords)
