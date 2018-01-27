@@ -10,14 +10,19 @@ class Computadoras_model extends CI_Model {
         }
 		public function getAll()
 		{
-			return $this->db->query("SELECT *
-									 FROM $this->table_name")->result_array();
+			return $this->db->query("SELECT co.*, cl.RAZON_SOCIAL
+									 FROM $this->table_name as co
+									 LEFT JOIN clientes as cl on
+										cl.CUIT = co.CUIT_CLIENTE
+									 ")->result_array();
 			
 		}
 		public function getById($id)
 		{
-			return $this->db->query("SELECT *
-									 FROM $this->table_name
+			return $this->db->query("SELECT co.*, cl.RAZON_SOCIAL
+									 FROM $this->table_name as co
+									 LEFT JOIN clientes as cl on
+										cl.CUIT = co.CUIT_CLIENTE
 									 where $this->PK = $id")->row_array();
 			
 		}

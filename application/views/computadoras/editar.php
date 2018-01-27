@@ -10,7 +10,7 @@
 						<div class="col-md-8">
 							<select name="CUIT_CLIENTE" size=1>
 							<? foreach($lista_clientes as $cli): ?>
-							<option value=<?=$cli['CUIT'];?>><?=$cli['RAZON_SOCIAL'];?></option>
+								<option value=<?=$cli['CUIT'];?> <? if($cli['CUIT']==$computadora['CUIT_CLIENTE']) echo 'selected'  ;?>><?=$cli['RAZON_SOCIAL'];?></option>
 							<? endforeach; ?>
 							</select>
 						</div>

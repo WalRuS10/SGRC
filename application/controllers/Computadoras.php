@@ -18,7 +18,6 @@ class Computadoras extends CI_Controller {
 	{
 		
 		$data['lista_computadoras'] = $this->Computadoras_model->getAll();
-		$data['lista_clientes'] = $this->Clientes_model->getAll();
 					
 		$data['_view'] = 'computadoras/index';
 		$this->load->view('layouts/main',$data);
@@ -77,6 +76,7 @@ class Computadoras extends CI_Controller {
             else
             {
 				$data['lista_clientes'] = $this->Clientes_model->getAll();
+				
                 $data['_view'] = 'computadoras/editar';
 				$this->load->view('layouts/main',$data);
             }
