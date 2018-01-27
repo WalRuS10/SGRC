@@ -7,6 +7,8 @@ class Reparaciones extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Reparaciones_model');
+		$this->load->model('Estados_model');
+		$this->load->model('Componentes_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -42,7 +44,7 @@ class Reparaciones extends CI_Controller {
         }
         else
         {            
-			$data['lista_estados'] = $this->Reparaciones_model->getAllEstados();
+			$data['lista_estados'] = $this->Estados_model->getAll();
             $data['_view'] = 'reparaciones/nuevo';
 			$this->load->view('layouts/main',$data);
         }
@@ -63,9 +65,9 @@ class Reparaciones extends CI_Controller {
 	
 	function editar($id)
     {   
-        $data['orden'] = $this->Reparaciones_model->getById($id);
+        $data['reparacion'] = $this->Reparaciones_model->getById($id);
         
-        if(isset($data['orden']['NRO_ORDEN']))
+        if(isset($data['reparacion']['NRO_ORDEN']))
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
@@ -81,7 +83,9 @@ class Reparaciones extends CI_Controller {
             }
             else
             {
-				$data['lista_estados'] = $this->Reparaciones_model->getAllEstados();
+				$data['lista_estados'] = $this->Estados_model->getAll();
+				$data['lista_componentes'] = $this->Componentes_model->getAll();
+				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentes($id);
                 $data['_view'] = 'reparaciones/editar';
 				$this->load->view('layouts/main',$data);
             }

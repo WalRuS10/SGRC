@@ -10,31 +10,21 @@ class Reparaciones_model extends CI_Model {
         }
 		public function getAll()
 		{
-			return $this->db->query("SELECT *
-							FROM $this->table_name")->result_array();
+			return $this->db->query("SELECT r.*, e.DESCRIPCION AS ESTADO
+							FROM $this->table_name as r
+							LEFT JOIN estados_reparaciones AS e ON
+								r.ESTADO_REPARACION = e.ID_ESTADO")->result_array();
 			
 		}
 		public function getById($id)
 		{
-			return $this->db->query("SELECT *
-							FROM $this->table_name
-							where $this->PK = $id
+			return $this->db->query("SELECT r.*, e.DESCRIPCION AS ESTADO
+							FROM $this->table_name as r
+							LEFT JOIN estados_reparaciones AS e ON
+								r.ESTADO_REPARACION = e.ID_ESTADO
+							where r.$this->PK = $id
 							")->row_array();
 			
-		}
-		
-		public function getEstado($id)
-		{
-			return $this->db->query("SELECT descripcion
-							FROM estados_reparaciones
-							WHERE ID_ESTADO=$id
-							")->row_array();
-		}
-		
-		public function getAllEstados()
-		{
-			return $this->db->query("SELECT *
-							FROM estados_reparaciones")->result_array();
 		}
 		
 		public function search($keywords)
@@ -58,4 +48,14 @@ class Reparaciones_model extends CI_Model {
 			return $this->db->update($this->table_name, $data);
 		}
 		
+		public function getComponentes($nro_orden)
+		{
+			return $this->db->query("SELECT c.*
+									 FROM componentes c
+									 JOIN reparaciones_componentes as rc on
+										rc.ID_COMPONENTE = c.ID_COMPONENTE
+									 JOIN reparaciones r ON
+										r.NRO_ORDEN = rc.NRO_ORDEN
+									 WHERE r.NRO_ORDEN = $nro_orden")->result_array();
+		}
 }
