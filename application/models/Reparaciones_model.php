@@ -22,7 +22,7 @@ class Reparaciones_model extends CI_Model {
 							FROM $this->table_name as r
 							LEFT JOIN estados_reparaciones AS e ON
 								r.ESTADO_REPARACION = e.ID_ESTADO
-							where r.$this->PK = $id
+							WHERE r.$this->PK = $id
 							")->row_array();
 			
 		}
@@ -50,7 +50,7 @@ class Reparaciones_model extends CI_Model {
 		
 		public function getComponentes($nro_orden)
 		{
-			return $this->db->query("SELECT c.*
+			return $this->db->query("SELECT c.*, rc.CANTIDAD
 									 FROM componentes c
 									 JOIN reparaciones_componentes as rc on
 										rc.ID_COMPONENTE = c.ID_COMPONENTE
@@ -58,4 +58,22 @@ class Reparaciones_model extends CI_Model {
 										r.NRO_ORDEN = rc.NRO_ORDEN
 									 WHERE r.NRO_ORDEN = $nro_orden")->result_array();
 		}
+		
+		public function getGasto($nro_orden)
+		{
+			return $this->db->query("SELECT SUM(c.PRECIO_COMPRA*rc.CANTIDAD) as TOTAL
+									 FROM componentes c
+									 JOIN reparaciones_componentes as rc on
+										rc.ID_COMPONENTE = c.ID_COMPONENTE
+									 JOIN reparaciones r ON
+										r.NRO_ORDEN = rc.NRO_ORDEN
+									 WHERE r.NRO_ORDEN = $nro_orden")->row_array();
+		}
+		
+		public function insertComponente($data)
+		{	
+			
+			return $this->db->insert('reparaciones_componentes', $data);
+		}
+		
 }

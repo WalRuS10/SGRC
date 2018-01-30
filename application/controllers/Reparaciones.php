@@ -86,11 +86,45 @@ class Reparaciones extends CI_Controller {
 				$data['lista_estados'] = $this->Estados_model->getAll();
 				$data['lista_componentes'] = $this->Componentes_model->getAll();
 				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentes($id);
+				$data['gasto'] = $this->Reparaciones_model->getGasto($id);
                 $data['_view'] = 'reparaciones/editar';
 				$this->load->view('layouts/main',$data);
             }
         }
         else
             show_error('La reparación no existe');
+    }
+
+	Public function nuevocomponente($id)
+    {   
+		$data['reparacion'] = $this->Reparaciones_model->getById($id);
+		
+		if(isset($data['reparacion']['NRO_ORDEN']))
+        {
+        if(isset($_POST) && count($_POST) > 0)     
+        {   
+            $data = array(
+				'NRO_ORDEN' => $data['reparacion']['NRO_ORDEN'],
+				'ID_COMPONENTE' => $this->input->post('ID_COMPONENTE'),
+				'CANTIDAD' => $this->input->post('CANTIDAD')
+            );
+            
+            $empleado_id = $this->Reparaciones_model->insertComponente($data);
+			
+			$data['lista_estados'] = $this->Estados_model->getAll();
+			$data['lista_componentes'] = $this->Componentes_model->getAll();
+			$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentes($id);
+			$data['gasto'] = $this->Reparaciones_model->getGasto($id);
+            redirect('reparaciones/editar/'.$id);
+
+        }
+        else
+        {   
+			$data['lista_estados'] = $this->Estados_model->getAll();
+            $data['_view'] = 'reparaciones/editar';
+			$this->load->view('layouts/main',$data);
+			redirect('reparaciones/editar');
+        }
+		}
     } 
 }

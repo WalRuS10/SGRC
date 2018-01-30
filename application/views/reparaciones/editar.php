@@ -56,6 +56,7 @@
 	<th>Descripción</th>
 	<th>Stock</th>
 	<th>Precio de Compra</th>
+	<th>Cantidad</th>
 	<th>Acciones</th>
 </tr> 
 
@@ -65,8 +66,46 @@
 			<td><?=$c['DESCRIPCION']?></td>
 			<td><?=$c['STOCK']?></td>
 			<td><?=$c['PRECIO_COMPRA']?></td>
+			<td><?=$c['CANTIDAD']?></td>
 			<td><a href='#'>eliminar</a></td>
 		</tr>
 <? endforeach; ?>
 
 </table>
+
+<h4 class="col-md-6">Gasto Total: <?=$gasto['TOTAL'];?></h4>
+
+<a> ------------------------------------------------------------------------------------------------------------------------------------- </a>
+
+<h3>Agregar Componente:</h3>
+
+<?php echo form_open('reparaciones/nuevocomponente/'.$reparacion['NRO_ORDEN']); ?>
+
+<div class="box-body">
+	<div class="row clearfix">
+		<div class="col-md-6">
+			<label for="ID_COMPONENTE" class="control-label">Componente</label>
+			<div class="form-group">
+			
+			<select name="ID_COMPONENTE" size=1>
+				<? foreach($lista_componentes as $lc): ?>
+				<option value=<?=$lc['ID_COMPONENTE'];?>><?=$lc['DESCRIPCION'];?></option>
+				<? endforeach; ?>
+				</select>
+			
+			<div class="col-md-6">
+			<label for="CANTIDAD" class="control-label">Cantidad</label>
+			<div class="form-group">
+				<input type="text" name="CANTIDAD" class="form-control" id="CANTIDAD" />
+			</div>
+		</div>
+		
+		<div class="box-footer">
+	<button type="submit" class="btn btn-success">
+		<i class="fa fa-check"></i> Agregar Componente
+	</button>
+</div>	
+			
+<?php echo form_close(); ?>
+
+
