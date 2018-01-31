@@ -1,4 +1,4 @@
-<h1>Nueva Reparación</h1>
+<h3>Nueva Reparación</h3>
 
 <?php echo form_open('reparaciones/nuevo',array("class"=>"form-horizontal")); ?>
 	<div class="form-group">

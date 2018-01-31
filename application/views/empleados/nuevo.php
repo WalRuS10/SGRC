@@ -1,4 +1,4 @@
-<h1>Nuevo Empleado</h1>
+<h3>Nuevo Empleado</h3>
 
 <?php echo form_open('empleados/nuevo',array("class"=>"form-horizontal")); ?>
 	<div class="form-group">
@@ -46,12 +46,12 @@
 			</select>
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Guardar</button>
 			<a class="btn btn-danger" href="<?=site_url('empleados')?>" >Cancelar</a>
-        </div>
+		</div>
 	</div>
 
 <?php echo form_close(); ?>

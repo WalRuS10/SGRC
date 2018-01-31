@@ -1,4 +1,4 @@
-<h1>clientes</h1>
+<h1>Clientes</h1>
 <?=form_open('clientes/buscar');?>
 <div class="form-group">
 	<?=form_label('CUIT: ', 'cuit');?>
