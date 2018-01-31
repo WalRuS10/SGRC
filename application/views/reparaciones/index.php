@@ -13,7 +13,7 @@
 
 <tr>
 	<th>Nro. de Orden</th>
-	<th>Id</th>
+	<th>Id de PC</th>
 	<th>Estado de Reparacion</th>
 	<th>Falla</th>
 	<th>Observaciones</th>

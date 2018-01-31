@@ -39,7 +39,7 @@ class Reparaciones extends CI_Controller {
 				'FECHA_ENTREGA' => $this->input->post('FECHA_ENTREGA')
             );
             
-            $empleado_id = $this->Reparaciones_model->insert($data);
+            $this->Reparaciones_model->insert($data);
             redirect('reparaciones/index');
         }
         else
@@ -84,13 +84,49 @@ class Reparaciones extends CI_Controller {
             else
             {
 				$data['lista_estados'] = $this->Estados_model->getAll();
-				$data['lista_componentes'] = $this->Componentes_model->getAll();
-				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentes($id);
+				//$data['lista_componentes_no_usados'] = $this->Componentes_model->getAll();
+				$data['lista_componentes_no_usados'] = $this->Reparaciones_model->getComponentesNoUsados($id);
+				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentesUsados($id);
+				$data['gasto'] = $this->Reparaciones_model->getGasto($id);
                 $data['_view'] = 'reparaciones/editar';
 				$this->load->view('layouts/main',$data);
             }
         }
         else
             show_error('La reparación no existe');
-    } 
+    }
+
+	Public function agregar_componente($id)
+    {   
+		$data['reparacion'] = $this->Reparaciones_model->getById($id);
+		
+		if(isset($data['reparacion']['NRO_ORDEN']))
+        {
+			if(isset($_POST) && count($_POST) > 0)     
+			{   
+				$data = array(
+					'NRO_ORDEN' => $data['reparacion']['NRO_ORDEN'],
+					'ID_COMPONENTE' => $this->input->post('ID_COMPONENTE'),
+					'CANTIDAD' => $this->input->post('CANTIDAD')
+				);
+				
+				$this->Reparaciones_model->insertComponente($data);
+				
+				redirect('reparaciones/editar/'.$id);
+
+			}
+			else
+			{   
+				redirect('reparaciones/editar/'.$id);
+			}
+		}
+		else
+			show_error('La reparacion no existe');
+    }
+
+	public function remover_componente($idreparacion,$idcomponente)
+	{
+		$this->Reparaciones_model->removeComponente($idreparacion,$idcomponente);
+		redirect('reparaciones/editar/'.$idreparacion);
+	}
 }

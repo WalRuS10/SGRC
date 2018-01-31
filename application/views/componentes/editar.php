@@ -2,7 +2,7 @@
 <div class="box-header with-border">
 	<h3 class="box-title">Editar Componente</h3>
 </div>
-<?php echo form_open('componentees/editar/'.$componente['ID_COMPONENTE']); ?>
+<?php echo form_open('componentes/editar/'.$componente['ID_COMPONENTE']); ?>
 <div class="box-body">
 	<div class="row clearfix">
 		<div class="col-md-6">
