@@ -1,36 +1,35 @@
+<h3>Editar Componente</h3>
+<?php echo form_open('componentes/editar/'.$componente['ID_COMPONENTE']); ?>
 
-<div class="box-header with-border">
-	<h3 class="box-title">Editar Componente</h3>
-</div>
-<?php echo form_open('componentees/editar/'.$componente['ID_COMPONENTE']); ?>
-<div class="box-body">
-	<div class="row clearfix">
-		<div class="col-md-6">
-			<label for="DESCRIPCION" class="control-label">Descripción</label>
-			<div class="form-group">
-				<input type="text" name="DESCRIPCION" value="<?php echo ($this->input->post('DESCRIPCION') ? $this->input->post('DESCRIPCION') : $componente['DESCRIPCION']); ?>" class="form-control" id="DESCRIPCION" />
-			</div>
-		</div>
-		<div class="col-md-6">
-			<label for="STOCK" class="control-label">Stock</label>
-			<div class="form-group">
-				<input type="text" name="STOCK" value="<?php echo ($this->input->post('STOCK') ? $this->input->post('STOCK') : $componente['STOCK']); ?>" class="form-control" id="STOCK" />
-			</div>
-		</div>
-		<div class="col-md-6">
-			<label for="PRECIO_COMPRA" class="control-label">Precio de Compra</label>
-			<div class="form-group">
-				<input type="text" name="PRECIO_COMPRA" value="<?php echo ($this->input->post('PRECIO_COMPRA') ? $this->input->post('PRECIO_COMPRA') : $componente['PRECIO_COMPRA']); ?>" class="form-control" id="PRECIO_COMPRA" />
-			</div>
+	<div class="form-group">
+		<label for="DESCRIPCION" class="col-md-4 control-label">Descripción</label>
+		<div class="col-md-8">
+			<input type="text" name="DESCRIPCION" value="<?php echo ($this->input->post('DESCRIPCION') ? $this->input->post('DESCRIPCION') : $componente['DESCRIPCION']); ?>" class="form-control" id="DESCRIPCION" />
 		</div>
 	</div>
-</div>
-<div class="box-footer">
-	<button type="submit" class="btn btn-success">
-		<i class="fa fa-check"></i> Guardar
-	</button>
-	<a class="btn btn-danger" href="<?=site_url('componentes')?>" >Cancelar</a>
-</div>				
+
+	<div class="form-group">
+		<label for="STOCK" class="col-md-4 control-label">Stock</label>
+		<div class="col-md-8">
+			<input type="text" name="STOCK" value="<?php echo ($this->input->post('STOCK') ? $this->input->post('STOCK') : $componente['STOCK']); ?>" class="form-control" id="STOCK" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="PRECIO_COMPRA" class="col-md-4 control-label">Precio de Compra</label>
+		<div class="col-md-8">
+			<input type="text" name="PRECIO_COMPRA" value="<?php echo ($this->input->post('PRECIO_COMPRA') ? $this->input->post('PRECIO_COMPRA') : $componente['PRECIO_COMPRA']); ?>" class="form-control" id="PRECIO_COMPRA" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="btn btn-success">
+				<i class="fa fa-check"></i> Guardar
+			</button>
+			<a class="btn btn-danger" href="<?=site_url('componentes')?>" >Cancelar</a>
+		</div>
+	</div>				
 <?php echo form_close(); ?>
 
 
