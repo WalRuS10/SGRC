@@ -26,9 +26,15 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="LEGAJO_ENCARGADO" class="col-md-4 control-label">Legajo Encargado</label>
+		<label for="LEGAJO_ENCARGADO" class="col-md-4 control-label">Empleado</label>
 		<div class="col-md-8">
-			<input type="text" name="LEGAJO_ENCARGADO" value="<?=$this->input->post('LEGAJO_ENCARGADO'); ?>" class="form-control" id="LEGAJO_ENCARGADO" />
+			<select name="LEGAJO_ENCARGADO" size=1>
+			<? foreach($lista_empleados as $emp): ?>
+			<? if ($emp['CARGO'] == "E"){?>
+			<option value=<?=$emp['LEGAJO'];?>><?=$emp['APELLIDO'];?></option>
+			<? }?>
+			<? endforeach; ?>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">

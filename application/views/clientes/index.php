@@ -27,7 +27,7 @@
 		<td><?=$cli['RAZON_SOCIAL']?></td>
 		<td><?=$cli['DOMICILIO']?></td>
 		<td><?=$cli['TELEFONO']?></td>
-		<td><?=$cli['LEGAJO_ENCARGADO']?></td>
+		<td><?=$cli['APELLIDO']?></td>
 		<td><?=$cli['ESTADO']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('clientes/editar/'.$cli['CUIT'])?>" >Editar</a>

@@ -7,6 +7,7 @@ class Clientes extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Clientes_model');
+		$this->load->model('Empleados_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -33,7 +34,7 @@ class Clientes extends CI_Controller {
 				'DOMICILIO' => $this->input->post('DOMICILIO'),
 				'TELEFONO' => $this->input->post('TELEFONO'),
 				'LEGAJO_ENCARGADO' => $this->input->post('LEGAJO_ENCARGADO'),
-				'ESTADO' => $this->input->post('ESTADO')
+				'ESTADO' => 'ACTIVO'
             );
             
             $empleado_id = $this->Clientes_model->insert($data);
@@ -41,6 +42,8 @@ class Clientes extends CI_Controller {
         }
         else
         {            
+			$data['lista_clientes'] = $this->Clientes_model->getAll();
+			$data['lista_empleados'] = $this->Empleados_model->getAll();
             $data['_view'] = 'clientes/nuevo';
 			$this->load->view('layouts/main',$data);
         }

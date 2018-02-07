@@ -1,8 +1,8 @@
 <?php
 class Clientes_model extends CI_Model {
 	
-		private $table_name = 'clientes';
-		private $PK = 'CUIT';
+		private $table_name = 'empleados';
+		private $PK = 'LEGAJO';
 
         public function __construct()
         {
@@ -11,8 +11,7 @@ class Clientes_model extends CI_Model {
 		public function getAll()
 		{
 			return $this->db->query("SELECT *
-									 FROM clientes c
-									 JOIN empleados e ON c.LEGAJO_ENCARGADO=e.LEGAJO")->result_array();
+							FROM $this->table_name")->result_array();
 			
 		}
 		public function getById($id)
