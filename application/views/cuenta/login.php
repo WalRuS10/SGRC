@@ -1,8 +1,8 @@
  
-	<img src='<?=base_url()?>/images/logo.png'  class='mx-auto d-block' alt='logo'>     
+	     
 	 <form action="<?=site_url('cuenta/login')?>" method="post" class="form-signin" accept-charset="utf-8">
-	 
-        <h2 class="form-signin-heading">Login</h2>
+	 <img src='<?=base_url()?>/images/logo.png'  class='mx-auto d-block' alt='logo' width = '100%'> </br>
+        <!--<h2 class="form-signin-heading">Login</h2>-->
         <label for="nombre" class="sr-only">Usuario</label>
         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required autofocus>
         <label for="password" class="sr-only">Password</label>
