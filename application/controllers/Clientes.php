@@ -64,6 +64,7 @@ class Clientes extends CI_Controller {
 	
 	function editar($id)
     {   
+		
         $data['cliente'] = $this->Clientes_model->getById($id);
         
         if(isset($data['cliente']['CUIT']))
@@ -83,6 +84,7 @@ class Clientes extends CI_Controller {
             }
             else
             {
+				$data['lista_empleados'] = $this->Empleados_model->getAll();
                 $data['_view'] = 'clientes/editar';
 				$this->load->view('layouts/main',$data);
             }

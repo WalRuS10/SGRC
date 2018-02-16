@@ -10,7 +10,7 @@ class Clientes_model extends CI_Model {
         }
 		public function getAll()
 		{
-			return $this->db->query("SELECT *
+			return $this->db->query("SELECT  c.CUIT, c.RAZON_SOCIAL, c.DOMICILIO, c.TELEFONO, e.APELLIDO, c.ESTADO
 									 FROM clientes c
 									 JOIN empleados e ON c.LEGAJO_ENCARGADO=e.LEGAJO")->result_array();
 			
