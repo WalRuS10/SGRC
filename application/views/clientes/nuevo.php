@@ -40,7 +40,12 @@
 	<div class="form-group">
 		<label for="ESTADO" class="col-md-4 control-label">Estado</label>
 		<div class="col-md-8">
-			<input type="text" name="ESTADO" value="<?=$this->input->post('ESTADO'); ?>" class="form-control" id="ESTADO" />
+			<select name="ESTADO" size=1>
+
+			<option value="ACTIVO">ACTIVO</option>
+			<option value="INACTIVO">INACTIVO</option>
+
+			</select>
 		</div>
 	</div>
 

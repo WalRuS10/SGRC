@@ -12,7 +12,7 @@ class Empleados extends CI_Controller {
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
-			redirect('login');
+			redirect('cuenta');
 		}
 	}
 	public function index()

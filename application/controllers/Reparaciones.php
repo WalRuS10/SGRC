@@ -104,14 +104,24 @@ class Reparaciones extends CI_Controller {
         {
 			if(isset($_POST) && count($_POST) > 0)     
 			{   
+		
+				$data['componente'] = $this->Componentes_model->getById($this->input->post('ID_COMPONENTE'));
+				
 				$data = array(
 					'NRO_ORDEN' => $data['reparacion']['NRO_ORDEN'],
 					'ID_COMPONENTE' => $this->input->post('ID_COMPONENTE'),
 					'CANTIDAD' => $this->input->post('CANTIDAD')
 				);
 				
-				$this->Reparaciones_model->insertComponente($data);
 				
+				if ((int)$data['componente']['STOCK'] < (int)$this->input->post('CANTIDAD'))
+				{
+					show_error('La cantidad pedida del componente es mayor al stock que hay del mísmo');											
+				}
+				else
+				{	
+					$this->Reparaciones_model->insertComponente($data);
+				}
 				redirect('reparaciones/editar/'.$id);
 
 			}

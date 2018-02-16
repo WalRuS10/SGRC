@@ -64,6 +64,7 @@ class Clientes extends CI_Controller {
 	
 	function editar($id)
     {   
+		$data['lista_empleados'] = $this->Empleados_model->getAll();
         $data['cliente'] = $this->Clientes_model->getById($id);
         
         if(isset($data['cliente']['CUIT']))
