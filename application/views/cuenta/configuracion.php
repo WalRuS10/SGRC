@@ -10,15 +10,15 @@
 		<label for="newpassword" class="sr-only">Password Nuevo</label>
         <input type="password" name="newpassword" class="form-control" placeholder="Password Nuevo" required>
 		
-		<label for="newpasswordr" class="sr-only">Repetir Password</label>
-        <input type="password" name="newpasswordr" class="form-control" placeholder="Repetir Password Nuevo" required>
+		<label for="newpasswordr" class="sr-only">Confirmar Password</label>
+        <input type="password" name="newpasswordr" class="form-control" placeholder="Confirmar Password" required>
        <!-- <div class="checkbox">
           <label>
             <input type="checkbox" name="remember-me"> Recordarme
           </label>
         </div>
 		-->
-        <button class="btn btn-primary" type="submit">Confirmar</button>
+        <button class="btn btn-primary" type="submit">Guardar</button>
 		<a class="btn btn-danger" href="<?=site_url('empleados')?>" >Cancelar</a>
       </form>
 	  

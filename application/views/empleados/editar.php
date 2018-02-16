@@ -29,7 +29,7 @@
 	<div class="form-group">
 		<label for="PASSWORD" class="col-md-4 control-label">PASSWORD</label>
 		<div class="col-md-8">
-			<input type="password" name="PASSWORD" value="" class="form-control" id="PASSWORD" />
+			<input type="password" name="PASSWORD" value=<?=$empleado['PASSWORD'];?> class="form-control" id="PASSWORD" />
 		</div>
 	</div>
 	<div class="form-group">

@@ -54,11 +54,23 @@ class Cuenta extends CI_Controller {
 		
 		$this->form_validation->set_rules('oldpassword', 'Password Actual', 'required');
 		$this->form_validation->set_rules('newpassword', 'Password Nuevo', 'required');
-		$this->form_validation->set_rules('newpasswordr', 'Repetir Password', 'required');
+		$this->form_validation->set_rules('newpasswordr', 'Confirmar Password', 'required|matches[newpassword]');
+		
 		
 		if($this->form_validation->run() == false){				
 			$data['_view'] = 'cuenta/configuracion';
 			$this->load->view('layouts/login',$data);
+		}
+		else{
+			if($this->input->post('oldpassword') != $_SESSION['PASSWORD']){
+				$data['_view'] = 'cuenta/configuracion';
+				$data['errorMessage'] = 'El password actual es incorrecto';
+				$this->load->view('layouts/login',$data);
+			}
+			else{	
+				$this->Empleados_model->changePassword($_SESSION['LEGAJO'],$this->input->post('newpassword'));
+				redirect('empleados');
+			}
 		}
 	}
 	
