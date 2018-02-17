@@ -135,9 +135,9 @@ class Reparaciones extends CI_Controller {
 		redirect('reparaciones/editar/'.$idreparacion);
 	}
 	
-	public function imprimir($id)
+	public function imprimir($id = NULL)
 	{
-		if(!isset($id)){
+		if($id == NULL){
 			$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();		
 					
 			$data['_view'] = 'reparaciones/reporte';
