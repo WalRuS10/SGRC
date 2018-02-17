@@ -85,6 +85,14 @@ class Reparaciones_model extends CI_Model {
 	
 	public function insertComponente($data)
 	{
+		/*
+		$idcomponente = $data['ID_COMPONENTE'];
+		$stock = $this->db->query("SELECT STOCK
+							FROM componentes
+						  WHERE ID_COMPONENTE = $idcomponente ;")->row();
+		if($stock<$data['CANTIDAD'])
+			die('asdasd');
+		*/
 		return $this->db->insert('reparaciones_componentes', $data);
 	}
 	
