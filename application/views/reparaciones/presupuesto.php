@@ -3,24 +3,24 @@
 <h3>Detalles</h3>
 <ul>
 <li type="square">
-	Codigo PC: <?=$reparacion['ID_COMPUTADORA'];?> 
+	<strong>Codigo PC:</strong> <?=$reparacion['ID_COMPUTADORA'];?> 
 </li>
 <li type="square">
 <? 
 	foreach($lista_estados as $est): 
 		if($reparacion['ESTADO_REPARACION'] == $est['ID_ESTADO']) 
-			echo 'Estado: ' . $est['DESCRIPCION'];
+			echo '<strong>Estado:</strong> ' . $est['DESCRIPCION'];
 	endforeach; 
 ?>
 </li>
 <li type="square">
-	Falla: <?=$reparacion['FALLA'];?> 
+	<strong>Falla:</strong> <?=$reparacion['FALLA'];?> 
 </li>
 <li type="square">
-	Observaciones: <?=$reparacion['OBSERVACIONES'];?> 
+	<strong>Observaciones:</strong> <?=$reparacion['OBSERVACIONES'];?> 
 </li>
 <li type="square">
-	Fecha de entrega: <?=$reparacion['FECHA_ENTREGA'];?> 
+	<strong>Fecha de entrega:</strong> <?=$reparacion['FECHA_ENTREGA'];?> 
 </li>
 
 </ul>
@@ -47,9 +47,9 @@
 
 <tr>
 	<th hidden>ID</th>
-	<th>Descripción</th>
 	<th hidden>Stock</th>
 	<th>Cantidad</th>
+	<th>Descripción</th>
 	<th>Precio de Compra</th>
 	<th>Sub Total</th>
 </tr> 
@@ -57,9 +57,9 @@
 <? foreach($lista_componentes_usados as $c): ?>
 		<tr>
 			<td hidden><?=$c['ID_COMPONENTE']?></td>
-			<td><?=$c['DESCRIPCION']?></td>
 			<td hidden><?=$c['STOCK']?></td>
 			<td><?=$c['CANTIDAD']?></td>
+			<td><?=$c['DESCRIPCION']?></td>
 			<td>$<?=number_format($c['PRECIO_COMPRA'],2);?>
 			</td>
 			<td>$<?=number_format($c['SUBTOTAL'],2);?></td>

@@ -137,9 +137,9 @@
 
 <tr>
 	<th hidden>ID</th>
-	<th>Descripción</th>
 	<th hidden>Stock</th>
 	<th>Cantidad</th>
+	<th>Descripción</th>
 	<th>Precio de Compra</th>
 	<th>Sub Total</th>
 	<th>Acciones</th>
@@ -148,9 +148,9 @@
 <? foreach($lista_componentes_usados as $c): ?>
 		<tr>
 			<td hidden><?=$c['ID_COMPONENTE']?></td>
-			<td><?=$c['DESCRIPCION']?></td>
 			<td hidden><?=$c['STOCK']?></td>
 			<td><?=$c['CANTIDAD']?></td>
+			<td><?=$c['DESCRIPCION']?></td>
 			<td>$<?=number_format($c['PRECIO_COMPRA'],2);?>
 			</td>
 			<td>$<?=number_format($c['SUBTOTAL'],2);?></td>
