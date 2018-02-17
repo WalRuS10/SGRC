@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 		
 		$data['_view'] = 'home/index';
 		
-		$this->load->view('layouts/main',$data);
+		$this->load->view('layouts/home',$data);
 			
 	}
 	
