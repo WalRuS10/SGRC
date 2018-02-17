@@ -13,7 +13,7 @@ class Cuenta extends CI_Controller {
 	public function login()
 	{
 		if($this->session->has_userdata('NOMBRE')){
-			redirect('empleados/index');
+			redirect('home/index');
 		}
 		$this->load->library('form_validation');
 		
@@ -32,7 +32,7 @@ class Cuenta extends CI_Controller {
 			
 			if($user){
 				$this->session->set_userdata($user);
-				redirect('empleados/index');
+				redirect('home/index');
 			}else{
 				
 				$data['errorMessage'] = "Usuario o password erroneos";	
@@ -69,7 +69,7 @@ class Cuenta extends CI_Controller {
 			}
 			else{	
 				$this->Empleados_model->changePassword($_SESSION['LEGAJO'],$this->input->post('newpassword'));
-				redirect('empleados');
+				redirect('home');
 			}
 		}
 	}

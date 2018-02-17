@@ -140,8 +140,8 @@
 	<th hidden>Stock</th>
 	<th>Cantidad</th>
 	<th>Descripción</th>
-	<th>Precio de Compra</th>
-	<th>Sub Total</th>
+	<th>Precio x Unidad</th>
+	<th>SubTotal</th>
 	<th>Acciones</th>
 </tr> 
 
@@ -159,7 +159,12 @@
 			</td>
 		</tr>
 <? endforeach; ?>
-
+	<tr>	
+		<td style="font-weight:bold; font-size:24px" colspan="3">
+			Total
+		</td>
+		<td style="font-weight:bold; font-size:24px" colspan="2">
+			$<?=number_format($gasto['TOTAL'],2);?>
+		</td>
+	</tr>
 </table>
-
-<div class="alert alert-success">Gasto Total: $<?=number_format($gasto['TOTAL'],2);?></div>

@@ -13,14 +13,14 @@
 			  padding-top: 40px;
 			  padding-bottom: 40px;
 			  background-color: #eee; 
-			  background-image: url("<?=base_url()?>/images/fondo1.jpg"); 
+			  background-image: url("<?=base_url()?>/images/fondo_login.jpg"); 
 			  background-size:cover;
 			}
 			.form-signin {
 			  max-width: 330px;
 			  padding: 15px;
 			  margin: 0 auto;
-			  background-color: rgba(0, 0, 0, 0.1);
+			  background-color: rgba(255, 255, 255, 0.5);
 			  border-radius: 10px;
 			}
 			.form-signin .form-signin-heading,

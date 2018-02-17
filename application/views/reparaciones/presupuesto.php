@@ -51,7 +51,7 @@
 	<th>Cantidad</th>
 	<th>Descripción</th>
 	<th>Precio de Compra</th>
-	<th>Sub Total</th>
+	<th>SubTotal</th>
 </tr> 
 
 <? foreach($lista_componentes_usados as $c): ?>
@@ -65,7 +65,8 @@
 			<td>$<?=number_format($c['SUBTOTAL'],2);?></td>
 		</tr>
 <? endforeach; ?>
-
+	<tr>		
+		<td  colspan="3" style="background-color:#000; color:#fff; font-weight:bold; font-size: 24px">Total</td>
+		<td   style="background-color:#000; color:#fff; font-weight:bold; font-size: 24px">$<?=number_format($gasto['TOTAL'],2);?></td>
+	</tr>
 </table>
-
-<h1>Gasto Total: $<?=number_format($gasto['TOTAL'],2);?></h1>
