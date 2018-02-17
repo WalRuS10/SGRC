@@ -92,4 +92,15 @@ class Clientes extends CI_Controller {
         else
             show_error('El cliente no existe');
     } 
+	
+	public function imprimir()
+	{
+		
+		$data['lista_clientes'] = $this->Clientes_model->getAll();		
+				
+		$data['_view'] = 'clientes/reporte';
+		
+		$this->load->view('layouts/reporte',$data);
+			
+	}
 }

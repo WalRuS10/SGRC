@@ -43,6 +43,56 @@
 	</div>
 <?php echo form_close(); ?>
 
+<hr />
+
+<h3>Asignar Técnico</h3>
+
+<?php echo form_open('reparaciones/agregar_tecnico/'.$reparacion['NRO_ORDEN']); ?>
+
+<div class="form-group">
+	<label for="LEGAJO_TECNICO" class="col-md-4 control-label">Técnico</label>
+	<div class="col-md-8">
+		<select name="LEGAJO_TECNICO" size=1>
+			<? foreach($lista_tecnicos_no_usados as $lc): ?>
+			<option value=<?=$lc['LEGAJO'];?>><?=$lc['APELLIDO'];?></option>
+			<? endforeach; ?>
+		</select>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-md-8">
+		<button type="submit" class="btn btn-success">
+			Agregar
+		</button>
+	</div>
+</div>
+			
+<?php echo form_close(); ?>
+
+
+<hr />
+
+<h3>Técnicos Asignados</h3>
+
+
+<table class="table table-light">
+
+<tr>
+	<th>Técnico</th>
+	<th>Acciones</th>
+</tr> 
+
+<? foreach($lista_tecnicos_usados as $c): ?>
+		<tr>
+			<td><?=$c['APELLIDO']?></td>
+			<td>
+				<a href="<?=site_url('reparaciones/remover_tecnico/'.$reparacion['NRO_ORDEN'].'/'.$c['LEGAJO']);?>">eliminar</a>
+			</td>
+		</tr>
+<? endforeach; ?>
+
+</table>
+
 
 <hr />
 
@@ -66,12 +116,13 @@
 		<input type="text" name="CANTIDAD" class="form-control" id="CANTIDAD" />
 	</div>
 </div>
-<div class="col-md-8">
-	<button type="submit" class="btn btn-success">
-		Agregar
-	</button>
+<div class="form-group">
+	<div class="col-md-8">
+		<button type="submit" class="btn btn-success">
+			Agregar
+		</button>
+	</div>
 </div>
-
 			
 <?php echo form_close(); ?>
 
@@ -81,26 +132,28 @@
 <h3>Componentes Usados y Gastos</h3>
 
 
+<a href="<?=site_url('reparaciones/imprimir/'.$reparacion['NRO_ORDEN']);?>" class="btn btn-primary" target="_blank">Imprimir</a> 
 <table class="table table-light">
 
 <tr>
-	<th>ID</th>
+	<th hidden>ID</th>
 	<th>Descripción</th>
-	<th>Stock</th>
-	<th>Precio de Compra</th>
+	<th hidden>Stock</th>
 	<th>Cantidad</th>
+	<th>Precio de Compra</th>
 	<th>Sub Total</th>
 	<th>Acciones</th>
 </tr> 
 
 <? foreach($lista_componentes_usados as $c): ?>
 		<tr>
-			<td><?=$c['ID_COMPONENTE']?></td>
+			<td hidden><?=$c['ID_COMPONENTE']?></td>
 			<td><?=$c['DESCRIPCION']?></td>
-			<td><?=$c['STOCK']?></td>
-			<td><?=$c['PRECIO_COMPRA']?></td>
+			<td hidden><?=$c['STOCK']?></td>
 			<td><?=$c['CANTIDAD']?></td>
-			<td><?=$c['SUBTOTAL']?></td>
+			<td>$<?=number_format($c['PRECIO_COMPRA'],2);?>
+			</td>
+			<td>$<?=number_format($c['SUBTOTAL'],2);?></td>
 			<td>
 				<a href="<?=site_url('reparaciones/remover_componente/'.$reparacion['NRO_ORDEN'].'/'.$c['ID_COMPONENTE']);?>">eliminar</a>
 			</td>
@@ -109,4 +162,4 @@
 
 </table>
 
-<div class="alert alert-success">Gasto Total: $<?=$gasto['TOTAL'];?></div>
+<div class="alert alert-success">Gasto Total: $<?=number_format($gasto['TOTAL'],2);?></div>

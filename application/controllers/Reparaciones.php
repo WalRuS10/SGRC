@@ -9,6 +9,7 @@ class Reparaciones extends CI_Controller {
 		$this->load->model('Reparaciones_model');
 		$this->load->model('Estados_model');
 		$this->load->model('Componentes_model');
+		$this->load->model('Clientes_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -84,9 +85,13 @@ class Reparaciones extends CI_Controller {
             else
             {
 				$data['lista_estados'] = $this->Estados_model->getAll();
-				//$data['lista_componentes_no_usados'] = $this->Componentes_model->getAll();
+				
 				$data['lista_componentes_no_usados'] = $this->Reparaciones_model->getComponentesNoUsados($id);
 				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentesUsados($id);
+				
+				$data['lista_tecnicos_no_usados'] = $this->Reparaciones_model->getTecnicosNoUsados($id);
+				$data['lista_tecnicos_usados'] = $this->Reparaciones_model->getTecnicosUsados($id);
+				
 				$data['gasto'] = $this->Reparaciones_model->getGasto($id);
                 $data['_view'] = 'reparaciones/editar';
 				$this->load->view('layouts/main',$data);
@@ -96,7 +101,7 @@ class Reparaciones extends CI_Controller {
             show_error('La reparación no existe');
     }
 
-	Public function agregar_componente($id)
+	public function agregar_componente($id)
     {   
 		$data['reparacion'] = $this->Reparaciones_model->getById($id);
 		
@@ -129,4 +134,71 @@ class Reparaciones extends CI_Controller {
 		$this->Reparaciones_model->removeComponente($idreparacion,$idcomponente);
 		redirect('reparaciones/editar/'.$idreparacion);
 	}
+	
+	public function imprimir($id)
+	{
+		if(!isset($id)){
+			$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();		
+					
+			$data['_view'] = 'reparaciones/reporte';
+			
+			$this->load->view('layouts/reporte',$data);
+		}
+		else{
+			 $data['reparacion'] = $this->Reparaciones_model->getById($id);
+        
+			if(isset($data['reparacion']['NRO_ORDEN']))
+			{
+			
+				$data['lista_estados'] = $this->Estados_model->getAll();
+				
+				$data['lista_componentes_no_usados'] = $this->Reparaciones_model->getComponentesNoUsados($id);
+				$data['lista_componentes_usados'] = $this->Reparaciones_model->getComponentesUsados($id);
+				
+				$data['lista_tecnicos_no_usados'] = $this->Reparaciones_model->getTecnicosNoUsados($id);
+				$data['lista_tecnicos_usados'] = $this->Reparaciones_model->getTecnicosUsados($id);
+				
+				$data['gasto'] = $this->Reparaciones_model->getGasto($id);
+				
+				$data['_view'] = 'reparaciones/presupuesto';
+				$this->load->view('layouts/reporte',$data);
+			
+			}
+		
+		}
+	}
+	
+	public function agregar_tecnico($id)
+    {   
+		$data['reparacion'] = $this->Reparaciones_model->getById($id);
+		
+		if(isset($data['reparacion']['NRO_ORDEN']))
+        {
+			if(isset($_POST) && count($_POST) > 0)     
+			{   
+				$data = array(
+					'NRO_ORDEN_REPARACION' => $data['reparacion']['NRO_ORDEN'],
+					'LEGAJO_TECNICO' => $this->input->post('LEGAJO_TECNICO'),
+				);
+				
+				$this->Reparaciones_model->insertTecnico($data);
+				
+				redirect('reparaciones/editar/'.$id);
+
+			}
+			else
+			{   
+				redirect('reparaciones/editar/'.$id);
+			}
+		}
+		else
+			show_error('La reparacion no existe');
+    }
+
+	public function remover_tecnico($idreparacion,$legajo)
+	{
+		$this->Reparaciones_model->removeTecnico($idreparacion,$legajo);
+		redirect('reparaciones/editar/'.$idreparacion);
+	}
+	
 }

@@ -43,7 +43,7 @@
 <? foreach($proveedores_componente as $pc): ?>
 	<tr>
 		<td><?=$pc['RAZON_SOCIAL']?></td>
-		<td><?=$pc['PRECIO']?></td>
+		<td>$<?=number_format($pc['PRECIO'],2)?></td>
 		<td><a href='#'>eliminar</a></td>
 	</tr>
 <? endforeach ?>

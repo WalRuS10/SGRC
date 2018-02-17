@@ -10,10 +10,15 @@ class Reparaciones_model extends CI_Model {
 	}
 	public function getAll()
 	{
-		return $this->db->query("SELECT r.*, e.DESCRIPCION AS ESTADO
+		return $this->db->query("SELECT r.*, e.DESCRIPCION AS ESTADO, em.APELLIDO
 						FROM $this->table_name as r
 						LEFT JOIN estados_reparaciones AS e ON
-							r.ESTADO_REPARACION = e.ID_ESTADO")->result_array();
+							r.ESTADO_REPARACION = e.ID_ESTADO
+						LEFT join tecnicos_reparaciones tr on
+							tr.NRO_ORDEN_REPARACION = r.NRO_ORDEN
+						LEFT JOIN empleados em on
+							em.LEGAJO = tr.LEGAJO_TECNICO 
+						")->result_array();
 		
 	}
 	public function getById($id)
@@ -86,6 +91,42 @@ class Reparaciones_model extends CI_Model {
 	public function removeComponente($idreparacion, $idcomponente)
 	{
 		return $this->db->delete('reparaciones_componentes', array('NRO_ORDEN' => $idreparacion, 'ID_COMPONENTE' => $idcomponente)); 
+	}
+	
+	
+		
+	public function getTecnicosUsados($nro_orden)
+	{
+		return $this->db->query("SELECT e.*
+								 FROM empleados e
+								 JOIN tecnicos_reparaciones as tr on
+								   tr.LEGAJO_TECNICO = e.LEGAJO
+								 WHERE tr.NRO_ORDEN_REPARACION = $nro_orden
+								 GROUP BY e.LEGAJO")->result_array();
+	}
+	
+	public function getTecnicosNoUsados($nro_orden)
+	{
+		return $this->db->query("SELECT *
+								 FROM empleados e
+								 JOIN tecnicos t ON
+									t.LEGAJO = e.LEGAJO
+								 WHERE e.LEGAJO NOT IN (
+									SELECT tr.LEGAJO_TECNICO
+									FROM tecnicos_reparaciones tr
+									WHERE tr.NRO_ORDEN_REPARACION = $nro_orden)
+									
+								 ")->result_array();
+	}
+	
+	public function insertTecnico($data)
+	{
+		return $this->db->insert('tecnicos_reparaciones', $data);
+	}
+	
+	public function removeTecnico($idreparacion, $legajo)
+	{
+		return $this->db->delete('tecnicos_reparaciones', array('NRO_ORDEN_REPARACION' => $idreparacion, 'LEGAJO_TECNICO' => $legajo)); 
 	}
 		
 }

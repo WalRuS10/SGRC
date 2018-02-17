@@ -4,23 +4,36 @@
 	 
         <h2 class="form-signin-heading">Configuracion</h2>
 		
-        <label for="oldpassword" class="sr-only">Password Actual</label>
-        <input type="password" name="oldpassword" class="form-control" placeholder="Password Actual" required>
-		
-		<label for="newpassword" class="sr-only">Password Nuevo</label>
-        <input type="password" name="newpassword" class="form-control" placeholder="Password Nuevo" required>
-		
-		<label for="newpasswordr" class="sr-only">Confirmar Password</label>
-        <input type="password" name="newpasswordr" class="form-control" placeholder="Confirmar Password" required>
+		<div class="form-group">
+			<label for="oldpassword">Password Actual</label>
+			<input type="password" name="oldpassword" class="form-control" placeholder="Password Actual" required>
+		</div>
+		<div class="form-group">
+			<label for="newpassword">Password Nuevo</label>
+			<input type="password" name="newpassword" class="form-control" placeholder="Password Nuevo" required>
+		</div>
+		<div class="form-group">
+			<label for="newpasswordr">Confirmar Password</label>
+			<input type="password" name="newpasswordr" class="form-control" placeholder="Confirmar Password" required>
+		</div>
        <!-- <div class="checkbox">
           <label>
             <input type="checkbox" name="remember-me"> Recordarme
           </label>
         </div>
 		-->
-        <button class="btn btn-primary" type="submit">Guardar</button>
+		<button class="btn btn-primary" type="submit">Guardar</button>
 		<a class="btn btn-danger" href="<?=site_url('empleados')?>" >Cancelar</a>
-      </form>
+		</form>
+
+		<? if(validation_errors() != "" or isset($errorMessage)) 
+			echo "<div class='alert alert-danger' style='margin-top: 30px; background-color: rgba(255,255,255,0.5)'> 
+					<strong>Error!</strong> " .  validation_errors();
+					
+			if(isset($errorMessage))
+				echo "</br> $errorMessage";
+			
+			echo "</div>";
+		?>
+	
 	  
-	  <?=validation_errors()?>
-	  <?if(isset($errorMessage)) echo $errorMessage?>
