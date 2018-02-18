@@ -43,5 +43,12 @@
 			
         </div>
 	</div>
+	
+	<script>
+		$.noConflict();
+		jQuery(document).ready(function ($) {
+			$("#FECHA_ENTREGA").datepicker();
+		});
+	</script>
 
 <?php echo form_close(); ?>

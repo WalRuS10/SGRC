@@ -16,11 +16,20 @@
 		<input type="text" name="FECHA_INGRESO" value="<?php echo ($this->input->post('FECHA_INGRESO') ? $this->input->post('FECHA_INGRESO') : $computadora['FECHA_INGRESO']); ?>" class="form-control" id="FECHA_INGRESO" />
 	</div>
 </div>
-
 <div class="form-group">
-	<button type="submit" class="btn btn-success">
-		<i class="fa fa-check"></i> Guardar
-	</button>
-	<a class="btn btn-danger" href="<?=site_url('computadoras')?>" >Cancelar</a>
+  <button type="submit" class="btn btn-success">
+    <i class="fa fa-check"></i> Guardar
+  </button>
+  <a class="btn btn-danger" href="<?=site_url('computadoras')?>" >Cancelar</a>
 </div>				
+
+<script>
+  $.noConflict();
+    jQuery(document).ready(function ($) {
+    $("#FECHA_INGRESO").datepicker();
+  });
+</script>
 <?php echo form_close(); ?>
+</div>
+</div>
+</div>

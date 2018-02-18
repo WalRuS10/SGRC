@@ -15,9 +15,12 @@ class Componentes extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$data['lista_componentes'] = $this->Componentes_model->getAll();
-					
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_componentes'] = $this->Componentes_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_componentes'] = $this->Componentes_model->getAll();
+		}
 		$data['_view'] = 'componentes/index';
 		$this->load->view('layouts/main',$data);
 			

@@ -5,25 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-		<style>
-			body {
-				background-image: url("<?=base_url()?>/images/fondo1.jpg");
-				background-size:cover;
-			}
-		</style>
 		<title>SGRC</title>
 	</head>
 	<body>
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-				<a class="navbar-brand" href="<?=site_url('home')?>">
-				<img src='<?=base_url()?>/images/logo2.png' class='mx-auto d-block' alt='logo' width="120">
+				<a class="navbar-brand" href="#">
+				<img src='<?=base_url()?>/images/logo2.png' class='mx-auto d-block' alt='logo' width="120px">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
