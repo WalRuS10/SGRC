@@ -2,13 +2,13 @@
 
 <?php echo form_open('clientes/nuevo',array("class"=>"form-horizontal")); ?>
 	<div class="form-group">
-		<label for="CUIT" class="col-md-4 control-label">CUIT</label>
+		<label for="CUIT" class="col-md-4 control-label">C.U.I.T.</label>
 		<div class="col-md-8">
 			<input type="text" name="CUIT" value="<?=$this->input->post('CUIT'); ?>" class="form-control" id="CUIT" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="RAZON_SOCIAL" class="col-md-4 control-label">Razon Social</label>
+		<label for="RAZON_SOCIAL" class="col-md-4 control-label">Razón Social</label>
 		<div class="col-md-8">
 			<input type="text" name="RAZON_SOCIAL" value="<?=$this->input->post('RAZON_SOCIAL'); ?>" class="form-control" id="RAZON_SOCIAL" />
 		</div>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="TELEFONO" class="col-md-4 control-label">Telefono</label>
+		<label for="TELEFONO" class="col-md-4 control-label">Teléfono</label>
 		<div class="col-md-8">
 			<input type="text" name="TELEFONO" value="<?=$this->input->post('TELEFONO'); ?>" class="form-control" id="TELEFONO" />
 		</div>

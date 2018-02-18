@@ -1,4 +1,4 @@
-<h1>Nueva computadora</h1>
+<h1>Nueva Computadora</h1>
 
 <?php echo form_open('computadoras/nuevo',array("class"=>"form-horizontal")); ?>
 <div class="form-group">
