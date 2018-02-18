@@ -1,8 +1,16 @@
 <h1>Proveedores</h1>
-<?=form_open('proveedores/buscar');?>
+<?
+$fields = array(
+				'CUIT' => "CUIT",
+				'RAZON_SOCIAL' => "Razón Social",
+				'DOMICILIO' => "Domicilio",
+				'TELEFONO' => "Teléfono"
+				 );?>
+<?=form_open('proveedores/index');?>
 <div class="form-group">
-	<?=form_label('CUIT: ', 'cuit');?>
-	<?=form_input('cuit', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>

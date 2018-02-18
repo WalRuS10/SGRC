@@ -1,8 +1,17 @@
 <h1>Clientes</h1>
-<?=form_open('clientes/buscar');?>
+<?
+$fields = array(
+				'CUIT' => "CUIT",
+				'RAZON_SOCIAL' => "Razón Social",
+				'DOMICILIO' => "Domicilio",
+				'TELEFONO' => "Teléfono",
+				'LEGAJO_ENCARGADO' => "Legajo Encargado",
+				 );?>
+<?=form_open('clientes/index');?>
 <div class="form-group">
-	<?=form_label('CUIT: ', 'cuit');?>
-	<?=form_input('cuit', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>

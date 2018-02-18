@@ -27,9 +27,15 @@ class Computadoras_model extends CI_Model {
 			
 		}
 		
-		public function search($keywords)
+		public function search($field, $searchword)
 		{
-			//To Do...
+			return $this->db->query("SELECT A.*, cl.RAZON_SOCIAL
+									 FROM $this->table_name A
+									 LEFT JOIN clientes cl on
+										cl.CUIT = A.CUIT_CLIENTE
+									 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
+											OR '$searchword' = '')
+									 ")->result_array();
 		}
 		
 		public function insert($data)

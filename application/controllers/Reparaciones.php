@@ -11,6 +11,7 @@ class Reparaciones extends CI_Controller {
 		$this->load->model('Componentes_model');
 		$this->load->model('Clientes_model');
 		$this->load->library('session');
+		$this->load->helper('date');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
 			redirect('login');
@@ -18,13 +19,15 @@ class Reparaciones extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();		
-				
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_reparaciones'] = $this->Reparaciones_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();
+		}
 		$data['_view'] = 'reparaciones/index';
 		
 		$this->load->view('layouts/main',$data);
-			
 	}
 	
 	public function nuevo()
@@ -37,7 +40,7 @@ class Reparaciones extends CI_Controller {
 				'ESTADO_REPARACION' => $this->input->post('ESTADO_REPARACION'),
 				'FALLA' => $this->input->post('FALLA'),
 				'OBSERVACIONES' => $this->input->post('OBSERVACIONES'),
-				'FECHA_ENTREGA' => $this->input->post('FECHA_ENTREGA')
+				'FECHA_ENTREGA' => nice_date($this->input->post('FECHA_ENTREGA'), "Y/m/d")
             );
             
             $this->Reparaciones_model->insert($data);
@@ -76,7 +79,7 @@ class Reparaciones extends CI_Controller {
 					'ESTADO_REPARACION' => $this->input->post('ESTADO_REPARACION'),
 					'FALLA' => $this->input->post('FALLA'),
 					'OBSERVACIONES' => $this->input->post('OBSERVACIONES'),
-					'FECHA_ENTREGA' => $this->input->post('FECHA_ENTREGA')
+					'FECHA_ENTREGA' => nice_date($this->input->post('FECHA_ENTREGA'), "Y/m/d")
                 );
 
                 $this->Reparaciones_model->update($id,$data);            

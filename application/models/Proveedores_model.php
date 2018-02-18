@@ -23,9 +23,13 @@ class Proveedores_model extends CI_Model {
 			
 		}
 		
-		public function search($keywords)
+		public function search($field, $searchword)
 		{
-			//To Do...
+			return $this->db->query("SELECT *
+									 FROM $this->table_name A
+									 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
+											OR '$searchword' = '')
+									 ")->result_array();
 		}
 		
 		public function insert($data)

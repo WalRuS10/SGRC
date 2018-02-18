@@ -32,9 +32,15 @@ class Reparaciones_model extends CI_Model {
 		
 	}
 	
-	public function search($keywords)
+	public function search($field, $searchword)
 	{
-		//To Do...
+		return $this->db->query("SELECT A.*, e.DESCRIPCION AS ESTADO
+								 FROM $this->table_name as A
+								 LEFT JOIN estados_reparaciones AS e
+								 ON A.ESTADO_REPARACION = e.ID_ESTADO
+								 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
+										OR '$searchword' = '')
+								 ")->result_array();
 	}
 	
 	public function insert($data)
