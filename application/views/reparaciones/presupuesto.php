@@ -50,7 +50,7 @@
 	<th hidden>Stock</th>
 	<th>Cantidad</th>
 	<th>Descripción</th>
-	<th>Precio de Compra</th>
+	<th>Precio x Unidad</th>
 	<th>SubTotal</th>
 </tr> 
 
@@ -66,7 +66,7 @@
 		</tr>
 <? endforeach; ?>
 	<tr>		
-		<td  colspan="3" style="background-color:#000; color:#fff; font-weight:bold; font-size: 24px">Total</td>
-		<td   style="background-color:#000; color:#fff; font-weight:bold; font-size: 24px">$<?=number_format($gasto['TOTAL'],2);?></td>
+		<td  colspan="3" style="font-weight:bold; font-size: 24px">Total</td>
+		<td   style="font-weight:bold; font-size: 24px">$<?=number_format($gasto['TOTAL'],2);?></td>
 	</tr>
 </table>
