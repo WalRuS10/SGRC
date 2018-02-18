@@ -22,31 +22,26 @@
 			<input type="text" name="TELEFONO" value="<?php echo ($this->input->post('TELEFONO') ? $this->input->post('TELEFONO') : $cliente['TELEFONO']); ?>" class="form-control" id="TELEFONO" />
 		</div>
 	</div>
-	
+
 	<div class="form-group">
-						<label for="LEGAJO_ENCARGADO" class="col-md-4 control-label">Encargado</label>
-						<div class="col-md-8">
-							<select name="LEGAJO_ENCARGADO" size=1>
-							<? foreach ($lista_empleados as $emp){?>
-							<? if ($emp['CARGO'] == "E"){?>
-							<option value=<?=$emp['LEGAJO'];?> <? if($emp['LEGAJO']==$cliente['LEGAJO_ENCARGADO']) echo 'selected';?>><?=$emp['APELLIDO'];?></option>
-							<? }?>
-							<? }?>
-							</select>
-						</div>
-					</div>
-				
-					
+		<label for="LEGAJO_ENCARGADO" class="col-md-4 control-label">Encargado</label>
+		<div class="col-md-8">
+			<select name="LEGAJO_ENCARGADO" size=1>
+			<? foreach ($lista_empleados as $emp){?>
+			<? if ($emp['CARGO'] == "E"){?>
+			<option value=<?=$emp['LEGAJO'];?> <? if($emp['LEGAJO']==$cliente['LEGAJO_ENCARGADO']) echo 'selected';?>><?=$emp['APELLIDO'];?></option>
+			<? }?>
+			<? }?>
+			</select>
+		</div>
+	</div>
+
 	<div class="form-group">
 		<label for="ESTADO" class="col-md-4 control-label">Estado</label>
 		<div class="col-md-8">
 			<select name="ESTADO" size=1>
-			<? if ($emp['CARGO'] == "E"){?>
 			<option value="ACTIVO" <? if($cliente['ESTADO']=="ACTIVO") echo 'selected';?>>ACTIVO</option>
-			<? }?>
-			<? if ($emp['CARGO'] == "E"){?>
 			<option value="INACTIVO" <? if($cliente['ESTADO']=="INACTIVO") echo 'selected';?>>INACTIVO</option>
-			<? }?>
 			</select>
 		</div>
 	</div>

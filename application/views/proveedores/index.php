@@ -1,4 +1,4 @@
-<h1>proveedores</h1>
+<h1>Proveedores</h1>
 <?=form_open('proveedores/buscar');?>
 <div class="form-group">
 	<?=form_label('CUIT: ', 'cuit');?>
@@ -8,6 +8,7 @@
 <?=form_close();?>
 <div class="pull-right">
 	<a href="<?php echo site_url('proveedores/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
+	<a href="<?php echo site_url('proveedores/imprimir'); ?>" class="btn btn-primary" target="_blank">Imprimir</a>
 </div>
 <table class="table table-light">
 
@@ -27,7 +28,7 @@
 		<td><?=$pro['TELEFONO']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('proveedores/editar/'.$pro['CUIT'])?>" >Editar</a>
-			<a class="btn btn-danger" href="<?=site_url('proveedores/eliminar/'.$pro['CUIT'])?>" >Eliminar</a>
+			
 		</td>
 	</tr>
 <? endforeach; ?>

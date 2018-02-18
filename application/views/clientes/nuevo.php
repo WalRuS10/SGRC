@@ -37,17 +37,6 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="ESTADO" class="col-md-4 control-label">Estado</label>
-		<div class="col-md-8">
-			<select name="ESTADO" size=1>
-
-			<option value="ACTIVO">ACTIVO</option>
-			<option value="INACTIVO">INACTIVO</option>
-
-			</select>
-		</div>
-	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">

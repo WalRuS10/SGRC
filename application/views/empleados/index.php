@@ -17,6 +17,7 @@ $fields = array(
 <?=form_close();?>
 <div class="pull-right">
 	<a href="<?php echo site_url('empleados/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
+	<a href="<?php echo site_url('empleados/imprimir'); ?>" class="btn btn-primary" target="_blank">Imprimir</a>
 </div>
 <table class="table table-light">
 
@@ -43,7 +44,7 @@ $fields = array(
 		<td hidden><?=$emp['PASSWORD']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('empleados/editar/'.$emp['LEGAJO'])?>" >Editar</a>
-			<a class="btn btn-danger" href="<?=site_url('empleados/eliminar/'.$emp['LEGAJO'])?>" >Eliminar</a>
+			
 		</td>
 	</tr>
 <? endforeach; ?>

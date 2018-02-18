@@ -6,7 +6,6 @@ DROP SCHEMA IF EXISTS `PROYECTO`;
 
 CREATE SCHEMA IF NOT EXISTS `PROYECTO`;
 
-
 USE `PROYECTO` ;
 
 -- -----------------------------------------------------

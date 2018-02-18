@@ -96,4 +96,15 @@ class Empleados extends CI_Controller {
         else
             show_error('El empleado no existe');
     }
+	
+	public function imprimir()
+	{
+		
+		$data['lista_empleados'] = $this->Empleados_model->getAll();		
+				
+		$data['_view'] = 'empleados/reporte';
+		
+		$this->load->view('layouts/reporte',$data);
+			
+	}
 }

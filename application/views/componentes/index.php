@@ -7,7 +7,8 @@
 </div>
 <?=form_close();?>
 <div class="pull-right">
-	<a href="<?php echo site_url('componentes/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
+	<a href="<?php echo site_url('componentes/nuevo'); ?>" class="btn btn-success">Nuevo</a>
+	<a href="<?php echo site_url('componentes/imprimir'); ?>" class="btn btn-primary" target="_blank">Imprimir</a>
 </div>
 <table class="table table-light">
 
@@ -24,10 +25,10 @@
 		<td><?=$pro['ID_COMPONENTE']?></td>
 		<td><?=$pro['DESCRIPCION']?></td>
 		<td><?=$pro['STOCK']?></td>
-		<td><?=$pro['PRECIO_COMPRA']?></td>
+		<td>$<?=number_format($pro['PRECIO_COMPRA'],2)?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('componentes/editar/'.$pro['ID_COMPONENTE'])?>" >Editar</a>
-			<a class="btn btn-danger" href="<?=site_url('componentes/eliminar/'.$pro['ID_COMPONENTE'])?>" >Eliminar</a>
+			
 		</td>
 	</tr>
 <? endforeach; ?>
