@@ -14,14 +14,17 @@ class Clientes extends CI_Controller {
 			redirect('login');
 		}
 	}
+	
 	public function index()
 	{
-		
-		$data['lista_clientes'] = $this->Clientes_model->getAll();
-					
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_clientes'] = $this->Clientes_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_clientes'] = $this->Clientes_model->getAll();
+		}							
 		$data['_view'] = 'clientes/index';
 		$this->load->view('layouts/main',$data);
-			
 	}
 	
 	public function nuevo()

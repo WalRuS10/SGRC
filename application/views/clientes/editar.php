@@ -31,9 +31,12 @@
 	</div>
 
 	<div class="form-group">
-		<label for="ESTADO" class="col-md-4 control-label">Estado</label>
+		<label for="ESTADO" class="col-md-4 control-label">ESTADO</label>
 		<div class="col-md-8">
-			<input type="text" name="ESTADO" value="<?php echo ($this->input->post('ESTADO') ? $this->input->post('ESTADO') : $cliente['ESTADO']); ?>" class="form-control" id="PASSWORD" />
+			<select name="ESTADO" class="form-control" id="ESTADO">
+				<option value="ACTIVO" <?php if(($this->input->post('ESTADO') ? $this->input->post('ESTADO') : $cliente['ESTADO']) == 'ACTIVO') echo "selected";?> >Activo</option>
+				<option value="INACTIVO" <?php if(($this->input->post('ESTADO') ? $this->input->post('ESTADO') : $cliente['ESTADO']) == 'INACTIVO') echo "selected";?> >Inactivo</option>
+			</select>
 		</div>
 	</div>
 

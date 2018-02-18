@@ -37,12 +37,6 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="ESTADO" class="col-md-4 control-label">Estado</label>
-		<div class="col-md-8">
-			<input type="text" name="ESTADO" value="<?=$this->input->post('ESTADO'); ?>" class="form-control" id="ESTADO" />
-		</div>
-	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">

@@ -1,8 +1,14 @@
 <h1>Computadoras</h1>
-<?=form_open('computadoras/buscar');?>
+<?
+$fields = array(
+				'ID_COMPUTADORA' => "ID",
+				'CUIT_CLIENTE' => "CUIT Cliente",
+				 );?>
+<?=form_open('computadoras/index');?>
 <div class="form-group">
-	<?=form_label('ID de Computadora: ', 'id_computadora');?>
-	<?=form_input('id_computadora', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>

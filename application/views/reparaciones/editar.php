@@ -41,6 +41,13 @@
 			<a class="btn btn-danger" href="<?=site_url('reparaciones')?>" >Cancelar</a>
 		</div>				
 	</div>
+	
+	<script>
+		$.noConflict();
+		jQuery(document).ready(function ($) {
+			$("#FECHA_ENTREGA").datepicker();
+		});
+	</script>
 <?php echo form_close(); ?>
 
 

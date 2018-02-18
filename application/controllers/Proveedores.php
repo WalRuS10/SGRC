@@ -15,9 +15,12 @@ class Proveedores extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$data['lista_proveedores'] = $this->Proveedores_model->getAll();
-					
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_proveedores'] = $this->Proveedores_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_proveedores'] = $this->Proveedores_model->getAll();
+		}					
 		$data['_view'] = 'proveedores/index';
 		$this->load->view('layouts/main',$data);
 			

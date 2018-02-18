@@ -28,6 +28,13 @@
 				</button>
 				<a class="btn btn-danger" href="<?=site_url('computadoras')?>" >Cancelar</a>
 	        </div>				
+			
+			<script>
+			$.noConflict();
+			jQuery(document).ready(function ($) {
+				$("#FECHA_INGRESO").datepicker();
+			});
+			</script>
 			<?php echo form_close(); ?>
 		</div>
     </div>

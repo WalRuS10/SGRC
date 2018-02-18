@@ -1,8 +1,16 @@
 <h1>Reparaciones</h1>
-<?=form_open('reparaciones/buscar');?>
+<?
+$fields = array(
+				'NRO_ORDEN' => "N° Orden",
+				'ID_COMPUTADORA' => "ID Computadora",
+				'FALLA' => "CUIT Cliente",
+				'OBSERVACIONES' => "CUIT Cliente",
+				 );?>
+<?=form_open('reparaciones/index');?>
 <div class="form-group">
-	<?=form_label('Nro. de Orden: ', 'nro_orden');?>
-	<?=form_input('nro_orden', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>

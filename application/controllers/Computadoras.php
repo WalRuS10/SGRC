@@ -9,6 +9,7 @@ class Computadoras extends CI_Controller {
 		$this->load->model('Computadoras_model');
 		$this->load->model('Clientes_model');
 		$this->load->library('session');
+		$this->load->helper('date');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
 			redirect('login');
@@ -16,12 +17,14 @@ class Computadoras extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$data['lista_computadoras'] = $this->Computadoras_model->getAll();
-					
+		if(isset($_POST) && count($_POST) > 0){
+			$data['lista_computadoras'] = $this->Computadoras_model->search($_POST['field'], $_POST['searchword']);
+		}
+		else{
+			$data['lista_computadoras'] = $this->Computadoras_model->getAll();
+		}
 		$data['_view'] = 'computadoras/index';
 		$this->load->view('layouts/main',$data);
-			
 	}
 	
 	public function nuevo()
@@ -30,7 +33,7 @@ class Computadoras extends CI_Controller {
         {   
             $data = array(
 				'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
-				'FECHA_INGRESO' => $this->input->post('FECHA_INGRESO')
+				'FECHA_INGRESO' => nice_date($this->input->post('FECHA_INGRESO'), "Y/m/d"),
             );
             
             $id_computadora = $this->Computadoras_model->insert($data);
@@ -67,7 +70,7 @@ class Computadoras extends CI_Controller {
             {   
                 $data = array(
 					'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
-					'FECHA_INGRESO' => $this->input->post('FECHA_INGRESO')
+					'FECHA_INGRESO' => nice_date($this->input->post('FECHA_INGRESO'), "Y/m/d")
                 );
 
                 $this->Computadoras_model->update($id,$data);            

@@ -1,11 +1,17 @@
 <h1>Componentes</h1>
-<?=form_open('componentes/buscar');?>
+<?
+$fields = array(
+				'ID_COMPONENTE' => "ID",
+				'DESCRIPCION' => "Descripción",
+				'STOCK' => "Stock",
+				'PRECIO_COMPRA' => "Precio",
+				 );?>
+<?=form_open('componentes/index');?>
 <div class="form-group">
-	<?=form_label('ID de Componente: ', 'id_componente');?>
-	<?=form_input('id_componente', '0');?>
+	<?=form_label('Buscar por: ', 'field');?>
+	<?=form_dropdown('field', $fields);?>
+	<?=form_input('searchword');?>
 	<?=form_submit('buscar','Buscar');?>
-</div>
-<?=form_close();?>
 <div class="pull-right">
 	<a href="<?php echo site_url('componentes/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
 </div>
