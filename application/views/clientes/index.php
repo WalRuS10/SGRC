@@ -15,8 +15,10 @@ $fields = array(
 	<?=form_submit('buscar','Buscar');?>
 </div>
 <?=form_close();?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('clientes/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
+	<a href="<?php echo site_url('clientes/imprimir'); ?>" class="btn btn-primary" target="_blank">Imprimir</a> 
 </div>
 <table class="table table-light">
 

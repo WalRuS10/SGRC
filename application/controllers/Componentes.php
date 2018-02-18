@@ -98,4 +98,15 @@ class Componentes extends CI_Controller {
 		$this->Componentes_model->remove_proveedor_componente($cuit_proveedor, $id_componente);
 		redirect("componentes/editar/$id_componente");
 	}
+	
+	public function imprimir()
+	{
+		
+		$data['lista_componentes'] = $this->Componentes_model->getAll();		
+				
+		$data['_view'] = 'componentes/reporte';
+		
+		$this->load->view('layouts/reporte',$data);
+			
+	}
 }

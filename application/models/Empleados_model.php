@@ -121,8 +121,12 @@ class Empleados_model extends CI_Model {
 				if($this->verifyPassword($pass,$user_data['PASSWORD']))
 					return $user_data;
 			}
-			
-			
+		}
+		
+		public function changePassword($id, $new_password)
+		{
+			$this->db->where($this->PK, $id);
+			return $this->db->update($this->table_name, array('PASSWORD' => $new_password));
 		}
 		
 }

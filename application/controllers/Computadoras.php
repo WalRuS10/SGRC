@@ -87,4 +87,15 @@ class Computadoras extends CI_Controller {
         else
             show_error('La computadora no existe');
     } 
+	
+	public function imprimir()
+	{
+		
+		$data['lista_computadoras'] = $this->Computadoras_model->getAll();		
+				
+		$data['_view'] = 'computadoras/reporte';
+		
+		$this->load->view('layouts/reporte',$data);
+			
+	}
 }

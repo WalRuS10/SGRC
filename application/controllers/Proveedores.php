@@ -86,4 +86,15 @@ class Proveedores extends CI_Controller {
         else
             show_error('El proveedor no existe');
     } 
+	
+	public function imprimir()
+	{
+		
+		$data['lista_proveedores'] = $this->Proveedores_model->getAll();		
+				
+		$data['_view'] = 'proveedores/reporte';
+		
+		$this->load->view('layouts/reporte',$data);
+			
+	}
 }
