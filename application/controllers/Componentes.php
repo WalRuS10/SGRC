@@ -29,7 +29,14 @@ class Componentes extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+       $this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('DESCRIPCION', 'Descripcion', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+	    $this->form_validation->set_rules('STOCK', 'Stock', 'xss_clean|numeric|max_length[10]'); 
+	    $this->form_validation->set_rules('PRECIO_COMPRA', 'Precio compra', 'xss_clean'); 
+	   
+        if ($this->form_validation->run())  // si las validaciones fueron correctas...
         {   
             $data = array(
 				'DESCRIPCION' => $this->input->post('DESCRIPCION'),
@@ -66,8 +73,15 @@ class Componentes extends CI_Controller {
         
         if(isset($data['componente']['ID_COMPONENTE']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
+		   $this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('DESCRIPCION', 'Descripcion', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+			$this->form_validation->set_rules('STOCK', 'Stock', 'xss_clean|numeric|max_length[10]'); 
+			$this->form_validation->set_rules('PRECIO_COMPRA', 'Precio compra', 'xss_clean'); 
+		   
+			if ($this->form_validation->run())  // si las validaciones fueron correctas...
+		    {   
                 $data = array(
 					'DESCRIPCION' => $this->input->post('DESCRIPCION'),
 					'STOCK' => $this->input->post('STOCK'),

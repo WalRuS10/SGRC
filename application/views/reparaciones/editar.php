@@ -17,6 +17,7 @@
 		<label for="FALLA" class="col-md-4 control-label">Falla</label>	
 		<div class="col-md-8">	
 			<input type="text" name="FALLA" value="<?php echo ($this->input->post('FALLA') ? $this->input->post('FALLA') : $reparacion['FALLA']); ?>" class="form-control" id="FALLA" />
+			<?=form_error('FALLA');?>
 		</div>
 	</div>
 
@@ -24,6 +25,7 @@
 		<label for="OBSERVACIONES" class="col-md-4 control-label">Observaciones</label>
 		<div class="col-md-8">
 			<input type="text" name="OBSERVACIONES" value="<?php echo ($this->input->post('OBSERVACIONES') ? $this->input->post('OBSERVACIONES') : $reparacion['OBSERVACIONES']); ?>" class="form-control" id="OBSERVACIONES" />
+			<?=form_error('OBSERVACIONES');?>
 		</div>
 	</div>
 
@@ -31,6 +33,7 @@
 		<label for="FECHA_ENTREGA" class="col-md-4 control-label">Fecha de Entrega</label>
 		<div class="col-md-8">
 			<input type="text" name="FECHA_ENTREGA" value="<?php echo ($this->input->post('FECHA_ENTREGA') ? $this->input->post('FECHA_ENTREGA') : $reparacion['FECHA_ENTREGA']); ?>" class="form-control" id="FECHA_ENTREGA" />
+			<?=form_error('FECHA_ENTREGA');?>
 		</div>
 	</div>
 	<div class="form-group">
@@ -121,6 +124,7 @@
 	<label for="CANTIDAD" class="col-md-4 control-label">Cantidad</label>
 	<div class="col-md-8">
 		<input type="text" name="CANTIDAD" class="form-control" id="CANTIDAD" autocomplete="off" />
+		<?=form_error('CANTIDAD');?>
 	</div>
 </div>
 <div class="form-group">

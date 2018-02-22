@@ -21,18 +21,21 @@
 		<label for="FALLA" class="col-md-4 control-label">Falla</label>
 		<div class="col-md-8">
 			<input type="text" name="FALLA" value="<?=$this->input->post('FALLA'); ?>" class="form-control" id="FALLA" />
+			<?=form_error('FALLA');?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="OBSERVACIONES" class="col-md-4 control-label">Observaciones</label>
 		<div class="col-md-8">
 			<input type="text" name="OBSERVACIONES" value="<?=$this->input->post('OBSERVACIONES'); ?>" class="form-control" id="OBSERVACIONES" />
+			<?=form_error('OBSERVACIONES');?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="FECHA_ENTREGA" class="col-md-4 control-label">Fecha de Entrega</label>
 		<div class="col-md-8">
 			<input type="text" name="FECHA_ENTREGA" value="<?=$this->input->post('FECHA_ENTREGA'); ?>" class="form-control" id="FECHA_ENTREGA" />
+			<?=form_error('FECHA_ENTREGA');?>
 		</div>
 	</div>
 	

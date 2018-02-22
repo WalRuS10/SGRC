@@ -32,7 +32,14 @@ class Reparaciones extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('FALLA', 'Falla', 'xss_clean|trim|required');
+	    $this->form_validation->set_rules('OBSERVACIONES', 'Observaciones', 'xss_clean|trim');
+	    $this->form_validation->set_rules('FECHA_ENTREGA', 'Fecha de entrega', 'xss_clean|trim|required');
+		
+        if ($this->form_validation->run())  // si las validaciones fueron correctas...
         {   
             $data = array(
 				'NRO_ORDEN' => $this->input->post('NRO_ORDEN'),
@@ -73,8 +80,15 @@ class Reparaciones extends CI_Controller {
         
         if(isset($data['reparacion']['NRO_ORDEN']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
+            $this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('FALLA', 'Falla', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('OBSERVACIONES', 'Observaciones', 'xss_clean|trim');
+			$this->form_validation->set_rules('FECHA_ENTREGA', 'Fecha de entrega', 'xss_clean|trim|required');
+			
+			if ($this->form_validation->run())  // si las validaciones fueron correctas...
+			{   
                 $data = array(
 					'ESTADO_REPARACION' => $this->input->post('ESTADO_REPARACION'),
 					'FALLA' => $this->input->post('FALLA'),
@@ -110,7 +124,12 @@ class Reparaciones extends CI_Controller {
 		
 		if(isset($data['reparacion']['NRO_ORDEN']))
         {
-			if(isset($_POST) && count($_POST) > 0)     
+			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('CANTIDAD', 'Cantidad', 'xss_clean|required|numeric');
+	   
+			if ($this->form_validation->run())  // si las validaciones fueron correctas...
 			{   
 				$data = array(
 					'NRO_ORDEN' => $data['reparacion']['NRO_ORDEN'],

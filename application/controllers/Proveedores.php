@@ -28,7 +28,15 @@ class Proveedores extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+        $this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('CUIT', 'C.U.I.T.', 'xss_clean|required|is_unique[proveedores.CUIT]|min_length[10]|max_length[11]');
+	    $this->form_validation->set_rules('RAZON_SOCIAL', 'Razon social', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+	    $this->form_validation->set_rules('DOMICILIO', 'Domicilio', 'xss_clean|max_length[50]'); 
+	    $this->form_validation->set_rules('TELEFONO', 'Telefono', 'xss_clean|numeric|max_length[11]'); 
+	    
+        if ($this->form_validation->run())  // si las validaciones fueron correctas...
         {   
             $data = array(
 				'CUIT' => $this->input->post('CUIT'),
@@ -37,7 +45,7 @@ class Proveedores extends CI_Controller {
 				'TELEFONO' => $this->input->post('TELEFONO')
             );
             
-            $empleado_id = $this->Proveedores_model->insert($data);
+            $this->Proveedores_model->insert($data);
             redirect('proveedores/index');
         }
         else
@@ -66,8 +74,15 @@ class Proveedores extends CI_Controller {
         
         if(isset($data['proveedor']['CUIT']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
+			// formato de las validaciones
+			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+            $this->form_validation->set_rules('RAZON_SOCIAL', 'Razon social', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+			$this->form_validation->set_rules('DOMICILIO', 'Domicilio', 'xss_clean|max_length[50]'); 
+			$this->form_validation->set_rules('TELEFONO', 'Telefono', 'xss_clean|numeric|max_length[11]'); 
+			
+			if ($this->form_validation->run())  // si las validaciones fueron correctas...
+			{   
                 $data = array(
 					'RAZON_SOCIAL' => $this->input->post('RAZON_SOCIAL'),
 					'DOMICILIO' => $this->input->post('DOMICILIO'),
