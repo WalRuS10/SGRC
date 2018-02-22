@@ -73,4 +73,10 @@ class Componentes_model extends CI_Model {
 										FROM proveedores_componentes
 										WHERE ID_COMPONENTE = $id_componente)")->result_array();
 		}
+		
+		public function getStock($id_componente){
+			return $this->db->query("SELECT STOCK 
+									   FROM componentes
+									   WHERE ID_COMPONENTE = $id_componente")->row()->STOCK;
+		}
 }
