@@ -14,6 +14,7 @@
 	<label for="FECHA_INGRESO" class="col-md-4 control-label">Fecha de Ingreso</label>
 	<div class="col-md-8">
 		<input type="text" name="FECHA_INGRESO" value="<?php echo ($this->input->post('FECHA_INGRESO') ? $this->input->post('FECHA_INGRESO') : $computadora['FECHA_INGRESO']); ?>" class="form-control" id="FECHA_INGRESO" />
+		<?=form_error('FECHA_INGRESO');?>
 	</div>
 </div>
 <div class="form-group">
