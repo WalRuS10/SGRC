@@ -43,7 +43,15 @@ class Reparaciones extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+		// ejemplo de validaciones
+		// formato de las validaciones
+		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('FALLA', 'Falla', 'xss_clean|required|max_length[100]');
+	    $this->form_validation->set_rules('OBSERVACIONES', 'Observaciones', 'max_length[50]|xss_clean');
+	    $this->form_validation->set_rules('FECHA_ENTREGA', 'Fecha de Entrega', 'regex_match[/([0-9]{2})\/([0-9]{2})\/([0-9]{4})\Z/]|xss_clean');
+        if($this->form_validation->run())     
         {   
             $data = array(
 				'NRO_ORDEN' => $this->input->post('NRO_ORDEN'),
@@ -84,7 +92,16 @@ class Reparaciones extends CI_Controller {
         
         if(isset($data['reparacion']['NRO_ORDEN']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+			// ejemplo de validaciones
+			// formato de las validaciones
+			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+			
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('FALLA', 'Falla', 'xss_clean|required|max_length[100]');
+			$this->form_validation->set_rules('OBSERVACIONES', 'Observaciones', 'max_length[50]|xss_clean');
+			$this->form_validation->set_rules('FECHA_ENTREGA', 'Fecha de Entrega', 'regex_match[/([0-9]{2})\/([0-9]{2})\/([0-9]{4})\Z/]|xss_clean');
+        
+            if($this->form_validation->run())     
             {   
                 $data = array(
 					'ESTADO_REPARACION' => $this->input->post('ESTADO_REPARACION'),
