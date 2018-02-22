@@ -15,8 +15,8 @@ class Proveedores extends CI_Controller {
 		}
 		
 		$validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE);
-		if($validuser['CARGO'] !== "A") {
-			$message = "Debe ser usuario ADMINISTRADOR para acceder a este módulo";
+		if($validuser['CARGO'] == "T") {
+			$message = "Debe ser usuario ADMINISTRADOR o ENCARGADO para acceder a este módulo";
 			//echo "<script type='text/javascript'>alert('$message');window.location = ('home/index') </script>";
 			redirect('home/index');;
 		}
