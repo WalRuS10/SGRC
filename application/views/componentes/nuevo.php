@@ -5,18 +5,21 @@
 		<label for="DESCRIPCION" class="col-md-4 control-label">Descripción</label>
 		<div class="col-md-8">
 			<input type="text" name="DESCRIPCION" value="<?=$this->input->post('DESCRIPCION'); ?>" class="form-control" id="DESCRIPCION" />
+			<?=form_error('DESCRIPCION');?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="STOCK" class="col-md-4 control-label">Stock</label>
 		<div class="col-md-8">
 			<input type="text" name="STOCK" value="<?=$this->input->post('STOCK'); ?>" class="form-control" id="STOCK" />
+			<?=form_error('STOCK');?>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="PRECIO_COMPRA" class="col-md-4 control-label">Precio de Compra</label>
 		<div class="col-md-8">
 			<input type="text" name="PRECIO_COMPRA" value="<?=$this->input->post('PRECIO_COMPRA'); ?>" class="form-control" id="PRECIO_COMPRA" />
+			<?=form_error('PRECIO_COMPRA');?>
 		</div>
 	</div>
 
