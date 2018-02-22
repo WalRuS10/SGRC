@@ -32,7 +32,8 @@ $fields = array(
 	<th>Acciones</th>
 </tr> 
 
-<? foreach($lista_empleados as $emp): ?>
+<? foreach($lista_empleados as $emp):
+	if($emp['CARGO'] != "A"){?>
 	<tr>
 		<td><?=$emp['LEGAJO']?></td>
 		<td><?=$emp['NOMBRE']?></td>
@@ -47,6 +48,7 @@ $fields = array(
 			<a class="btn btn-danger" href="<?=site_url('empleados/eliminar/'.$emp['LEGAJO'])?>" >Eliminar</a>
 		</td>
 	</tr>
-<? endforeach; ?>
+<? 	}
+   endforeach; ?>
 
 </table>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE); ?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -30,11 +31,16 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto ">
+					
+						<?php if($validuser['CARGO'] == "A") {?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url('empleados')?>">
 								Empleados
 							</a>
 						</li>
+						<?php } ?>
+						
+						<?php if($validuser['CARGO'] != "T") {?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url('clientes')?>">
 								Clientes
@@ -48,16 +54,20 @@
 								Componentes
 							</a>
 						</li>
+						<?php } ?>
+						
 						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url('reparaciones')?>">
 								Reparaciones
 							</a>
 						</li>
+						<?php if($validuser['CARGO'] != "T") {?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url('computadoras')?>">
 								Computadoras
 							</a>
 						</li>
+						<?php } ?>
 					</ul>
 					<!--
 					<form class="form-inline my-2 my-lg-0">

@@ -1,4 +1,6 @@
 <h1>Reparaciones</h1>
+<?php $validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE); ?>
+
 <?
 $fields = array(
 				'NRO_ORDEN' => "N° Orden",
@@ -17,7 +19,11 @@ $fields = array(
 
 
 <div class="pull-right">
+	
+	<?php if($validuser['CARGO'] != "T") {?>
 	<a href="<?php echo site_url('reparaciones/nuevo'); ?>" class="btn btn-success">Nuevo</a> 
+	<?php } ?>
+	
 	<a href="<?php echo site_url('reparaciones/imprimir'); ?>" class="btn btn-primary" target="_blank">Imprimir</a> 
 </div>
 
@@ -44,7 +50,11 @@ $fields = array(
 		<td><?=$rep['ESTADO']?></td>
 		<td>
 			<a class="btn btn-success" href="<?=site_url('reparaciones/editar/'.$rep['NRO_ORDEN'])?>" >Editar</a>
+			
+			<?php if($validuser['CARGO'] != "T") {?>
 			<a class="btn btn-danger" href="<?=site_url('reparaciones/eliminar/'.$rep['NRO_ORDEN'])?>" >Eliminar</a>
+			<?php } ?>
+			
 		</td>
 	</tr>
 <? endforeach; ?>

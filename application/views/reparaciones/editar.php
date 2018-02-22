@@ -1,7 +1,9 @@
+<?php $validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE); ?>
 <h3>Editar Reparacion</h3>
 	
 <?php echo form_open('reparaciones/editar/'.$reparacion['NRO_ORDEN']); ?>
 
+	<?php if($validuser['CARGO'] != "T") {?>
 	<div class="form-group">
 		<label for="ESTADO_REPARACION" class="col-md-4 control-label">Estado</label>
 		<div class="col-md-8">
@@ -19,6 +21,7 @@
 			<input type="text" name="FALLA" value="<?php echo ($this->input->post('FALLA') ? $this->input->post('FALLA') : $reparacion['FALLA']); ?>" class="form-control" id="FALLA" />
 		</div>
 	</div>
+	<?php } ?>
 
 	<div class="form-group">
 		<label for="OBSERVACIONES" class="col-md-4 control-label">Observaciones</label>
@@ -27,12 +30,14 @@
 		</div>
 	</div>
 
+	<?php if($validuser['CARGO'] != "T") {?>
 	<div class="form-group">
 		<label for="FECHA_ENTREGA" class="col-md-4 control-label">Fecha de Entrega</label>
 		<div class="col-md-8">
 			<input type="text" name="FECHA_ENTREGA" value="<?php echo ($this->input->post('FECHA_ENTREGA') ? $this->input->post('FECHA_ENTREGA') : $reparacion['FECHA_ENTREGA']); ?>" class="form-control" id="FECHA_ENTREGA" />
 		</div>
 	</div>
+	<?php } ?>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">
@@ -52,6 +57,7 @@
 
 <hr />
 
+<?php if($validuser['CARGO'] != "T") {?>
 <h3>Asignar Técnico</h3>
 
 <?php echo form_open('reparaciones/agregar_tecnico/'.$reparacion['NRO_ORDEN']); ?>
@@ -102,6 +108,7 @@
 
 
 <hr />
+<?php } ?>
 
 <h3>Componentes</h3>
 

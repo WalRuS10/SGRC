@@ -10,20 +10,31 @@ class Reparaciones extends CI_Controller {
 		$this->load->model('Estados_model');
 		$this->load->model('Componentes_model');
 		$this->load->model('Clientes_model');
+		$this->load->model('Empleados_model');
 		$this->load->library('session');
 		$this->load->helper('date');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
-			redirect('login');
+			redirect('cuenta/logout');
 		}
+		
 	}
+	
 	public function index()
 	{
+		$validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE);
+		
 		if(isset($_POST) && count($_POST) > 0){
+			if($validuser['CARGO'] == "T")
+				$data['lista_reparaciones'] = $this->Reparaciones_model->searchByTecnico($validuser['LEGAJO'], $_POST['field'], $_POST['searchword']);
+			else
 			$data['lista_reparaciones'] = $this->Reparaciones_model->search($_POST['field'], $_POST['searchword']);
 		}
 		else{
-			$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();
+			if($validuser['CARGO'] == "T")
+				$data['lista_reparaciones'] = $this->Reparaciones_model->getAllByTecnico($validuser['LEGAJO']);
+			else
+				$data['lista_reparaciones'] = $this->Reparaciones_model->getAll();
 		}
 		$data['_view'] = 'reparaciones/index';
 		

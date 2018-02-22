@@ -1,3 +1,4 @@
+<?php $validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE); ?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
@@ -10,11 +11,12 @@
 					</div>
 				</div>
 				<div class="card-footer">
-					<a class="boton" href="<?=site_url('reparaciones/nuevo')?>">Nuevo</a>
+					<?php if($validuser['CARGO'] != "T") { ?> <a class="boton" href="<?=site_url('reparaciones/nuevo')?>">Nuevo</a> <?php } ?>
 					<a class="boton" href="<?=site_url('reparaciones')?>">Listado</a>
 				</div>
 			</div>
 		</div>
+		<?php if($validuser['CARGO'] == "A") { ?>
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 			<div class="card">
 				<img class="card-img-top" src="<?=base_url()?>/images/empleados.jpg">
@@ -30,7 +32,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 		
+		<?php if($validuser['CARGO'] != "T") { ?>
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 			<div class="card">
 				<img class="card-img-top" src="<?=base_url()?>/images/clientes.jpg">
@@ -46,7 +50,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 		
+		<?php if($validuser['CARGO'] != "T") { ?>
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 			<div class="card">
 				<img class="card-img-top" src="<?=base_url()?>/images/proveedores.jpg">
@@ -62,7 +68,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 		
+		<?php if($validuser['CARGO'] != "T") { ?>
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 			<div class="card">
 				<img class="card-img-top" src="<?=base_url()?>/images/componentes.jpg">
@@ -78,6 +86,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+		
+		<?php if($validuser['CARGO'] != "T") { ?>
 		<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 			<div class="card">
 				<img class="card-img-top" src="<?=base_url()?>/images/computadoras.jpg">
@@ -93,5 +104,6 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 </div>

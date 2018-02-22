@@ -7,10 +7,18 @@ class Proveedores extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Proveedores_model');
+		$this->load->model('Empleados_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
-			redirect('login');
+			redirect('cuenta/logout');
+		}
+		
+		$validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE);
+		if($validuser['CARGO'] !== "A") {
+			$message = "Debe ser usuario ADMINISTRADOR para acceder a este módulo";
+			//echo "<script type='text/javascript'>alert('$message');window.location = ('home/index') </script>";
+			redirect('home/index');;
 		}
 	}
 	public function index()

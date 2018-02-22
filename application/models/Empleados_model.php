@@ -13,20 +13,24 @@ class Empleados_model extends CI_Model {
 			//Martín - Se modificó la consulta para devolver el cargo
 			return $this->db->query("SELECT A.*, CASE WHEN A.$this->PK = B.$this->PK THEN 'E'
 													  WHEN A.$this->PK = C.$this->PK THEN 'T'
+													  WHEN A.$this->PK = D.$this->PK THEN 'A'
 												 END AS 'CARGO'
 									 FROM $this->table_name A LEFT JOIN encargados B
 									 ON B.$this->PK = A.$this->PK LEFT JOIN tecnicos C
-									 ON C.$this->PK = A.$this->PK")->result_array();
+									 ON C.$this->PK = A.$this->PK LEFT JOIN administradores D
+									 ON D.$this->PK = A.$this->PK")->result_array();
 			
 		}
 		public function getById($id)
 		{
 			return $this->db->query("SELECT A.*, CASE WHEN A.$this->PK = B.$this->PK THEN 'E'
 													  WHEN A.$this->PK = C.$this->PK THEN 'T'
+													  WHEN A.$this->PK = D.$this->PK THEN 'A'
 												 END AS 'CARGO'
 									 FROM $this->table_name A LEFT JOIN encargados B
 									 ON B.$this->PK = A.$this->PK LEFT JOIN tecnicos C
-									 ON C.$this->PK = A.$this->PK
+									 ON C.$this->PK = A.$this->PK LEFT JOIN administradores D
+									 ON D.$this->PK = A.$this->PK
 									 where A.$this->PK = $id")->row_array();
 			
 		}
@@ -36,13 +40,29 @@ class Empleados_model extends CI_Model {
 		{
 			return $this->db->query("SELECT A.*, CASE WHEN A.$this->PK = B.$this->PK THEN 'E'
 													  WHEN A.$this->PK = C.$this->PK THEN 'T'
+													  WHEN A.$this->PK = D.$this->PK THEN 'A'
 												 END AS 'CARGO'
 									 FROM $this->table_name A LEFT JOIN encargados B
 									 ON B.$this->PK = A.$this->PK LEFT JOIN tecnicos C
-									 ON C.$this->PK = A.$this->PK
+									 ON C.$this->PK = A.$this->PK LEFT JOIN administradores D
+									 ON D.$this->PK = A.$this->PK
 									 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
 											OR '$searchword' = '')
 									 ")->result_array();
+		}
+		
+		public function searchExact($field, $searchword)
+		{
+			return $this->db->query("SELECT A.*, CASE WHEN A.$this->PK = B.$this->PK THEN 'E'
+													  WHEN A.$this->PK = C.$this->PK THEN 'T'
+													  WHEN A.$this->PK = D.$this->PK THEN 'A'
+												 END AS 'CARGO'
+									 FROM $this->table_name A LEFT JOIN encargados B
+									 ON B.$this->PK = A.$this->PK LEFT JOIN tecnicos C
+									 ON C.$this->PK = A.$this->PK LEFT JOIN administradores D
+									 ON D.$this->PK = A.$this->PK
+									 WHERE A.$field = '$searchword' AND '$searchword' <> ''
+									 ")->row_array();
 		}
 		
 		public function insert($data, $cargo)
@@ -128,5 +148,7 @@ class Empleados_model extends CI_Model {
 			$this->db->where($this->PK, $id);
 			return $this->db->update($this->table_name, array('PASSWORD' => $new_password));
 		}
+		
+		
 		
 }

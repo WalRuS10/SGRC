@@ -34,12 +34,40 @@ class Reparaciones_model extends CI_Model {
 	
 	public function search($field, $searchword)
 	{
-		return $this->db->query("SELECT A.*, e.DESCRIPCION AS ESTADO
+		return $this->db->query("SELECT A.*, e.DESCRIPCION AS ESTADO, EM.APELLIDO
 								 FROM $this->table_name as A
 								 LEFT JOIN estados_reparaciones AS e
-								 ON A.ESTADO_REPARACION = e.ID_ESTADO
+								 ON A.ESTADO_REPARACION = e.ID_ESTADO LEFT join tecnicos_reparaciones tr
+								 on tr.NRO_ORDEN_REPARACION = A.NRO_ORDEN LEFT JOIN empleados EM
+								 on EM.LEGAJO = tr.LEGAJO_TECNICO 
 								 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
 										OR '$searchword' = '')
+								 ")->result_array();
+	}
+	
+	public function searchByTecnico($id, $field, $searchword)
+	{
+		return $this->db->query("SELECT A.*, E.DESCRIPCION AS ESTADO, EM.APELLIDO
+								 FROM $this->table_name A
+								 LEFT JOIN estados_reparaciones E
+								 ON A.ESTADO_REPARACION = E.ID_ESTADO LEFT join tecnicos_reparaciones T
+								 on T.NRO_ORDEN_REPARACION = A.NRO_ORDEN LEFT JOIN empleados EM
+								 on EM.LEGAJO = T.LEGAJO_TECNICO 
+								 WHERE (A.$field LIKE '%$searchword%' AND '$searchword' <> ''
+										OR '$searchword' = '')
+								 AND T.LEGAJO_TECNICO = '$id'
+								 ")->result_array();
+	}
+	
+	public function getAllByTecnico($id)
+	{
+		return $this->db->query("SELECT r.*, e.DESCRIPCION AS ESTADO, EM.APELLIDO
+								 FROM $this->table_name as r
+								 LEFT JOIN estados_reparaciones AS e
+								 ON r.ESTADO_REPARACION = e.ID_ESTADO LEFT join tecnicos_reparaciones tr
+								 on tr.NRO_ORDEN_REPARACION = r.NRO_ORDEN LEFT JOIN empleados EM
+								 on EM.LEGAJO = tr.LEGAJO_TECNICO 
+								 WHERE EM.LEGAJO = '$id'
 								 ")->result_array();
 	}
 	
@@ -128,7 +156,7 @@ class Reparaciones_model extends CI_Model {
 								 WHERE e.LEGAJO NOT IN (
 									SELECT tr.LEGAJO_TECNICO
 									FROM tecnicos_reparaciones tr
-									WHERE tr.NRO_ORDEN_REPARACION = $nro_orden)
+									WHERE tr.NRO_ORDEN_REPARACION = '$nro_orden')
 									
 								 ")->result_array();
 	}

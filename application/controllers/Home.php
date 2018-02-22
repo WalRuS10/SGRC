@@ -10,10 +10,11 @@ class Home extends CI_Controller {
 		$this->load->model('Estados_model');
 		$this->load->model('Componentes_model');
 		$this->load->model('Clientes_model');
+		$this->load->model('Empleados_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
-			redirect('login');
+			redirect('cuenta/logout');
 		}
 	}
 	public function index()

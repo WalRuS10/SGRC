@@ -11,7 +11,14 @@ class Clientes extends CI_Controller {
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
-			redirect('login');
+			redirect('cuenta/logout');
+		}
+		
+		$validuser = $this->Empleados_model->searchExact("NOMBRE", $this->session->NOMBRE);
+		if($validuser['CARGO'] !== "A") {
+			$message = "Debe ser usuario ADMINISTRADOR para acceder a este módulo";
+			//echo "<script type='text/javascript'>alert('$message');window.location = ('home/index') </script>";
+			redirect('home/index');;
 		}
 	}
 	
