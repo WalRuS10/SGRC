@@ -5,18 +5,21 @@
 	<label for="LEGAJO" class="col-md-4 control-label">Legajo</label>
 	<div class="col-md-8">
 		<input type="text" name="LEGAJO" value="<?=$this->input->post('LEGAJO'); ?>" class="form-control" id="LEGAJO" />
+		<?=form_error('LEGAJO');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="NOMBRE" class="col-md-4 control-label">Nombre</label>
 	<div class="col-md-8">
 		<input type="text" name="NOMBRE" value="<?=$this->input->post('NOMBRE'); ?>" class="form-control" id="NOMBRE" />
+		<?=form_error('NOMBRE');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="APELLIDO" class="col-md-4 control-label">Apellido</label>
 	<div class="col-md-8">
 		<input type="text" name="APELLIDO" value="<?=$this->input->post('APELLIDO'); ?>" class="form-control" id="APELLIDO" />
+		<?=form_error('APELLIDO');?>
 	</div>
 </div>
 <div class="form-group">
@@ -35,6 +38,7 @@
 	<label for="PASSWORD" class="col-md-4 control-label">Password</label>
 	<div class="col-md-8">
 		<input type="text" name="PASSWORD" value="<?=$this->input->post('PASSWORD'); ?>" class="form-control" id="PASSWORD" />
+		<?=form_error('PASSWORD');?>
 	</div>
 </div>
 <div class="form-group">

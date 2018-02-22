@@ -120,7 +120,7 @@
 <div class="form-group">
 	<label for="CANTIDAD" class="col-md-4 control-label">Cantidad</label>
 	<div class="col-md-8">
-		<input type="text" name="CANTIDAD" class="form-control" id="CANTIDAD" />
+		<input type="text" name="CANTIDAD" class="form-control" id="CANTIDAD" autocomplete="off" />
 	</div>
 </div>
 <div class="form-group">

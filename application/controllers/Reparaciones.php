@@ -117,6 +117,9 @@ class Reparaciones extends CI_Controller {
 					'ID_COMPONENTE' => $this->input->post('ID_COMPONENTE'),
 					'CANTIDAD' => $this->input->post('CANTIDAD')
 				);
+				$stock = $this->Componentes_model->getStock($data['ID_COMPONENTE']);
+				if ($data['CANTIDAD'] > $stock)
+					die('Stock Insuficiente');
 				
 				$this->Reparaciones_model->insertComponente($data);
 				

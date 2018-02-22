@@ -30,7 +30,18 @@ class Empleados extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+		// ejemplo de validaciones
+		// formato de las validaciones
+		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		//$this->form_validation->set_message('required', 'Campo obligatorio'); // le pongo un mensaje personalizado para q no lo ponga en ingles
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('LEGAJO', 'Legajo', 'required|is_unique[empleados.LEGAJO]');
+	    $this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[5]|max_length[50]');
+	    $this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[5]|max_length[50]'); 
+	    $this->form_validation->set_rules('PASSWORD', 'Password', 'trim|required|min_length[5]|max_length[50]');
+		
+        if ($this->form_validation->run())  // si las validaciones fueron correctas...
         {   
             $data = array(
 				'LEGAJO' => $this->input->post('LEGAJO'),
@@ -38,7 +49,6 @@ class Empleados extends CI_Controller {
 				'APELLIDO' => $this->input->post('APELLIDO'),
 				'DOMICILIO' => $this->input->post('DOMICILIO'),
 				'TELEFONO' => $this->input->post('TELEFONO'),
-				//'PASSWORD' => $this->Empleados_model->createPassword($this->input->post('PASSWORD')),
 				'PASSWORD' => $this->input->post('PASSWORD'),
             );
 			$cargo = $this->input->post('CARGO');
