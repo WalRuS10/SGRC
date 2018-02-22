@@ -37,7 +37,13 @@ class Computadoras extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+		// ejemplo de validaciones
+		// formato de las validaciones
+		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+	    $this->form_validation->set_rules('FECHA_INGRESO', 'Fecha de Ingreso', 'regex_match[/([0-9]{2})\/([0-9]{2})\/([0-9]{4})\Z/]|xss_clean|required');
+        if($this->form_validation->run())     
         {   
             $data = array(
 				'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
@@ -74,7 +80,14 @@ class Computadoras extends CI_Controller {
         
         if(isset($data['computadora']['ID_COMPUTADORA']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+			// ejemplo de validaciones
+			// formato de las validaciones
+			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+			
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('FECHA_INGRESO', 'Fecha de Ingreso', 'regex_match[/([0-9]{2})\/([0-9]{2})\/([0-9]{4})\Z/]|xss_clean|required');
+        
+            if($this->form_validation->run()     
             {   
                 $data = array(
 					'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
