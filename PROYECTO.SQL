@@ -77,6 +77,9 @@ CREATE  TABLE IF NOT EXISTS `PROYECTO`.`ADMINISTRADORES` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `administradores` (`LEGAJO`) VALUES
+(1);
+
 
 -- -----------------------------------------------------
 -- Table `PROYECTO`.`CLIENTES`
@@ -129,6 +132,9 @@ CREATE  TABLE IF NOT EXISTS `PROYECTO`.`ESTADOS_REPARACIONES` (
   `DESCRIPCION` VARCHAR(50) NOT NULL ,
   PRIMARY KEY (`ID_ESTADO`) )
 ENGINE = InnoDB;
+
+INSERT INTO `estados_reparaciones` (`ID_ESTADO`,`DESCRIPCION`) VALUES
+(1,`EN REPARACION`)(2,`EN ESPERA`),(3,`FINALIZADA`),(4,`ACEPTADA`),(5,`RECHAZADA`);
 
 
 -- -----------------------------------------------------
