@@ -33,12 +33,11 @@ class Empleados extends CI_Controller {
 		// ejemplo de validaciones
 		// formato de las validaciones
 		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
-		//$this->form_validation->set_message('required', 'Campo obligatorio'); // le pongo un mensaje personalizado para q no lo ponga en ingles
 		
 		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
 	    $this->form_validation->set_rules('LEGAJO', 'Legajo', 'required|is_unique[empleados.LEGAJO]');
-	    $this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[5]|max_length[50]');
-	    $this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[5]|max_length[50]'); 
+	    $this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[3]|max_length[50]');
+	    $this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[3]|max_length[50]'); 
 	    $this->form_validation->set_rules('PASSWORD', 'Password', 'trim|required|min_length[5]|max_length[50]');
 		
         if ($this->form_validation->run())  // si las validaciones fueron correctas...
@@ -82,7 +81,14 @@ class Empleados extends CI_Controller {
         
         if(isset($data['empleado']['LEGAJO']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+			
+			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
+			$this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[3]|max_length[50]');
+			$this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[3]|max_length[50]'); 
+			$this->form_validation->set_rules('PASSWORD', 'Password', 'trim|required|min_length[5]|max_length[50]');
+			
+            if ($this->form_validation->run())  // si las validaciones fueron correctas...    
             {   
                 $data = array(
 					'NOMBRE' => $this->input->post('NOMBRE'),

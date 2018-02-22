@@ -6,12 +6,14 @@
 	<label for="NOMBRE" class="col-md-4 control-label">NOMBRE</label>
 	<div class="col-md-8">
 		<input type="text" name="NOMBRE" value="<?=$empleado['NOMBRE']; ?>" class="form-control" id="NOMBRE" />
+		<?=form_error('NOMBRE');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="APELLIDO" class="col-md-4 control-label">APELLIDO</label>
 	<div class="col-md-8">
 		<input type="text" name="APELLIDO" value="<?=$empleado['APELLIDO']; ?>" class="form-control" id="APELLIDO" />
+		<?=form_error('APELLIDO');?>
 	</div>
 </div>
 <div class="form-group">
@@ -30,6 +32,7 @@
 	<label for="PASSWORD" class="col-md-4 control-label">PASSWORD</label>
 	<div class="col-md-8">
 		<input type="password" name="PASSWORD" value=<?=$empleado['PASSWORD'];?> class="form-control" id="PASSWORD" />
+		<?=form_error('PASSWORD');?>
 	</div>
 </div>
 <div class="form-group">
