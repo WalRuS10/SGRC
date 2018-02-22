@@ -7,6 +7,7 @@ class Componentes extends CI_Controller {
 		/* Aca se cargan modulos, helpers, etc... si se usa en muchos controladores, 
 			dejarlo fijo en /config/autoload.php */
 		$this->load->model('Componentes_model');
+		$this->load->model('Proveedores_model');
 		$this->load->library('session');
 		
 		if(!$this->session->has_userdata('NOMBRE')){ // TODO: se podria mejorar...
@@ -78,6 +79,7 @@ class Componentes extends CI_Controller {
             }
             else
             {
+				$data['proveedores_no_usados'] = $this->Componentes_model->getProveedoresNoUsados($id);
 				$data['proveedores_componente'] = $this->Componentes_model->getProveedoresComponente($id);
                 $data['_view'] = 'componentes/editar';
 				$this->load->view('layouts/main',$data);
@@ -87,16 +89,40 @@ class Componentes extends CI_Controller {
             show_error('El componente no existe');
     } 
 	
-	public function agregar_proveedor($id_componente, $cuit_proveedor, $precio)
+
+	public function agregar_proveedor($id_componente)
+    {   
+		$data['componente'] = $this->Componentes_model->getById($id_componente);
+		
+		if(isset($data['componente']['ID_COMPONENTE']))
+        {
+			if(isset($_POST) && count($_POST) > 0)     
+			{   
+				$proveedor = $this->Proveedores_model->getById($this->input->post('CUIT_PROVEEDOR'));
+				$data = array(
+					'ID_COMPONENTE' => $id_componente,
+					'CUIT_PROVEEDOR' => $this->input->post('CUIT_PROVEEDOR'),
+					'PRECIO' => $this->input->post('PRECIO_P')
+				);
+				
+				$this->Componentes_model->addProveedorComponente($data);
+				
+				redirect('componentes/editar/'.$id_componente);
+
+			}
+			else
+			{   
+				redirect('componetentes/editar/'.$id_componente);
+			}
+		}
+		else
+			show_error('El componente no existe');
+    }
+
+	public function remover_proveedor($id_componente,$cuit)
 	{
-		$this->Componentes_model->add_proveedor_componente($cuit_proveedor, $id_componente, $precio);
-		redirect("componentes/editar/$id_componente");
-	}
-	
-	public function remover_proveedor($id_componente, $cuit_proveedor)
-	{
-		$this->Componentes_model->remove_proveedor_componente($cuit_proveedor, $id_componente);
-		redirect("componentes/editar/$id_componente");
+		$this->Componentes_model->removeProveedorComponente($cuit,$id_componente);
+		redirect('componentes/editar/'.$id_componente);
 	}
 	
 	public function imprimir()

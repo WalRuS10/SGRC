@@ -33,6 +33,44 @@
 <?php echo form_close(); ?>
 
 
+
+
+<h3>Proverdores</h3>
+
+
+<hr />
+
+<h3>Agregar Proveedor</h3>
+
+<?php echo form_open('componentes/agregar_proveedor/'.$componente['ID_COMPONENTE']); ?>
+
+<div class="form-group">
+	<label for="CUIT_PROVEEDOR" class="col-md-4 control-label">Proveedor</label>
+	<div class="col-md-8">
+		<select name="CUIT_PROVEEDOR" size=1>
+			<? foreach($proveedores_no_usados as $lp): ?>
+			<option value=<?=$lp['CUIT'];?>><?=$lp['RAZON_SOCIAL'];?></option>
+			<? endforeach; ?>
+		</select>
+	</div>
+	<label for="PRECIO_P" class="col-md-4 control-label">Precio</label>
+	<div class="col-md-4">
+		<input type="text" name="PRECIO_P" value="" class="form-control" id="PRECIO_P" />
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-md-8">
+		<button type="submit" class="btn btn-success">
+			Agregar
+		</button>
+	</div>
+</div>
+			
+<?php echo form_close(); ?>
+
+
+<hr />
+
 <table class="table table-light">
 
 <tr>
@@ -44,7 +82,7 @@
 	<tr>
 		<td><?=$pc['RAZON_SOCIAL']?></td>
 		<td>$<?=number_format($pc['PRECIO'],2)?></td>
-		<td><a href='#'>eliminar</a></td>
+		<td><a href="<?=site_url('componentes/remover_proveedor/').$componente['ID_COMPONENTE'].'/'.$pc['CUIT']?>">eliminar</a></td>
 	</tr>
 <? endforeach ?>
 </table>

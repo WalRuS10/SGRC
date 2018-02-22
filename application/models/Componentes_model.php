@@ -47,11 +47,9 @@ class Componentes_model extends CI_Model {
 			return $this->db->update($this->table_name, $data);
 		}
 		
-		public function addProveedorComponente($cuit_proveedor, $idcomponente, $precio)
+		public function addProveedorComponente($data)
 		{
-			return $this->db->insert('proveedores_componentes', array('CUIT_PROVEEDOR' => $cuit_proveedor,
-																'ID_COMPONENTE' => $idcomponente,
-																'PRECIO' => $precio));
+			return $this->db->insert('proveedores_componentes', $data);
 		}		
 		public function removeProveedorComponente($cuit_proveedor, $idcomponente)
 		{
@@ -67,4 +65,12 @@ class Componentes_model extends CI_Model {
 									 WHERE ID_COMPONENTE = $id_componente")->result_array();
 		}
 		
+		public function getProveedoresNoUsados($id_componente){
+			return $this->db->query("SELECT *
+									 FROM proveedores p
+									 WHERE p.CUIT NOT IN (
+										SELECT CUIT_PROVEEDOR
+										FROM proveedores_componentes
+										WHERE ID_COMPONENTE = $id_componente)")->result_array();
+		}
 }
