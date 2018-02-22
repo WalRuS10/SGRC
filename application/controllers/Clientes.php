@@ -34,7 +34,7 @@ class Clientes extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
 		
 		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
-	    $this->form_validation->set_rules('CUIT', 'C.U.I.T.', 'xss_clean|required|is_unique[clientes.CUIT]|max_length[11]');
+	    $this->form_validation->set_rules('CUIT', 'C.U.I.T.', 'xss_clean|required|is_unique[clientes.CUIT]|min_length[10]|max_length[11]');
 	    $this->form_validation->set_rules('RAZON_SOCIAL', 'Razon Social', 'xss_clean|trim|required|min_length[3]|max_length[50]');
 		$this->form_validation->set_rules('DOMICILIO', 'Domicilio', 'xss_clean|max_length[50]'); 
 	    $this->form_validation->set_rules('TELEFONO', 'Telefono', 'xss_clean|numeric|max_length[11]'); 

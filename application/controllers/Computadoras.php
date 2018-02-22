@@ -29,7 +29,11 @@ class Computadoras extends CI_Controller {
 	
 	public function nuevo()
 	{   
-        if(isset($_POST) && count($_POST) > 0)     
+		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+		$this->form_validation->set_rules('FECHA_INGRESO', 'Fecha de ingreso', 'xss_clean|required'); 
+	   
+        if ($this->form_validation->run())  // si las validaciones fueron correctas...    
         {   
             $data = array(
 				'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
@@ -66,8 +70,12 @@ class Computadoras extends CI_Controller {
         
         if(isset($data['computadora']['ID_COMPUTADORA']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
+            $this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
+		
+			$this->form_validation->set_rules('FECHA_INGRESO', 'Fecha de ingreso', 'xss_clean|required'); 
+	   
+			if ($this->form_validation->run())  // si las validaciones fueron correctas...    
+			{   
                 $data = array(
 					'CUIT_CLIENTE' => $this->input->post('CUIT_CLIENTE'),
 					'FECHA_INGRESO' => nice_date($this->input->post('FECHA_INGRESO'), "Y/m/d")

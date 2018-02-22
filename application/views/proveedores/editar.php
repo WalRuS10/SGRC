@@ -4,18 +4,21 @@
 	<label for="RAZON_SOCIAL" class="control-label">RAZON_SOCIAL</label>
 	<div class="col-md-8">
 		<input type="text" name="RAZON_SOCIAL" value="<?php echo ($this->input->post('RAZON_SOCIAL') ? $this->input->post('RAZON_SOCIAL') : $proveedor['RAZON_SOCIAL']); ?>" class="form-control" id="RAZON_SOCIAL" />
+		<?=form_error('RAZON_SOCIAL');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="DOMICILIO" class="control-label">DOMICILIO</label>
 	<div class="col-md-8">
 		<input type="text" name="DOMICILIO" value="<?php echo ($this->input->post('DOMICILIO') ? $this->input->post('DOMICILIO') : $proveedor['DOMICILIO']); ?>" class="form-control" id="DOMICILIO" />
+		<?=form_error('DOMICILIO');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="TELEFONO" class="control-label">TELEFONO</label>
 	<div class="col-md-8">
 		<input type="text" name="TELEFONO" value="<?php echo ($this->input->post('TELEFONO') ? $this->input->post('TELEFONO') : $proveedor['TELEFONO']); ?>" class="form-control" id="TELEFONO" />
+		<?=form_error('TELEFONO');?>
 	</div>
 </div>
 <div class="form-group">
