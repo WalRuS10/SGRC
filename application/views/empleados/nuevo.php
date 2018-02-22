@@ -26,12 +26,14 @@
 	<label for="DOMICILIO" class="col-md-4 control-label">Domicilio</label>
 	<div class="col-md-8">
 		<input type="text" name="DOMICILIO" value="<?=$this->input->post('DOMICILIO'); ?>" class="form-control" id="DOMICILIO" />
+		<?=form_error('DOMICILIO');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="TELEFONO" class="col-md-4 control-label">Teléfono</label>
 	<div class="col-md-8">
 		<input type="text" name="TELEFONO" value="<?=$this->input->post('TELEFONO'); ?>" class="form-control" id="TELEFONO" />
+		<?=form_error('TELEFONO');?>
 	</div>
 </div>
 <div class="form-group">

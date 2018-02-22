@@ -20,12 +20,14 @@
 	<label for="DOMICILIO" class="col-md-4 control-label">DOMICILIO</label>
 	<div class="col-md-8">
 		<input type="text" name="DOMICILIO" value="<?=$empleado['DOMICILIO']; ?>" class="form-control" id="DOMICILIO" />
+		<?=form_error('DOMICILIO');?>
 	</div>
 </div>
 <div class="form-group">
 	<label for="TELEFONO" class="col-md-4 control-label">TELEFONO</label>
 	<div class="col-md-8">
 		<input type="text" name="TELEFONO" value="<?=$empleado['TELEFONO']; ?>" class="form-control" id="TELEFONO" />
+		<?=form_error('TELEFONO');?>
 	</div>
 </div>
 <div class="form-group">

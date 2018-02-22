@@ -35,10 +35,12 @@ class Empleados extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
 		
 		// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
-	    $this->form_validation->set_rules('LEGAJO', 'Legajo', 'required|is_unique[empleados.LEGAJO]');
-	    $this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[3]|max_length[50]');
-	    $this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[3]|max_length[50]'); 
-	    $this->form_validation->set_rules('PASSWORD', 'Password', 'trim|required|min_length[5]|max_length[50]');
+	    $this->form_validation->set_rules('LEGAJO', 'Legajo', 'xss_clean|required|is_unique[empleados.LEGAJO]');
+	    $this->form_validation->set_rules('NOMBRE', 'Nombre', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+	    $this->form_validation->set_rules('APELLIDO', 'Apellido', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+		$this->form_validation->set_rules('DOMICILIO', 'Domicilio', 'xss_clean|max_length[50]'); 
+	    $this->form_validation->set_rules('TELEFONO', 'Telefono', 'xss_clean|numeric|max_length[11]'); 
+	    $this->form_validation->set_rules('PASSWORD', 'Password', 'xss_clean|trim|required|min_length[5]|max_length[50]');
 		
         if ($this->form_validation->run())  // si las validaciones fueron correctas...
         {   
@@ -84,10 +86,12 @@ class Empleados extends CI_Controller {
 			$this->form_validation->set_error_delimiters('<div class="bg-danger text-light">', '</div>');
 			
 			// setear reglas de validacion https://www.codeigniter.com/userguide3/libraries/form_validation.html
-			$this->form_validation->set_rules('NOMBRE', 'Nombre', 'trim|required|min_length[3]|max_length[50]');
-			$this->form_validation->set_rules('APELLIDO', 'Apellido', 'trim|required|min_length[3]|max_length[50]'); 
-			$this->form_validation->set_rules('PASSWORD', 'Password', 'trim|required|min_length[5]|max_length[50]');
-			
+			$this->form_validation->set_rules('NOMBRE', 'Nombre', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+			$this->form_validation->set_rules('APELLIDO', 'Apellido', 'xss_clean|trim|required|min_length[3]|max_length[50]');
+			$this->form_validation->set_rules('DOMICILIO', 'Domicilio', 'xss_clean|max_length[50]'); 
+			$this->form_validation->set_rules('TELEFONO', 'Telefono', 'xss_clean|numeric|max_length[11]'); 
+			$this->form_validation->set_rules('PASSWORD', 'Password', 'xss_clean|trim|required|min_length[5]|max_length[50]');
+		
             if ($this->form_validation->run())  // si las validaciones fueron correctas...    
             {   
                 $data = array(
